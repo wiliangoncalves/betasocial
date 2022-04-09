@@ -1,0 +1,124 @@
+#me{
+    /* display: none; */
+    margin-bottom: 215px;
+}
+
+.headerMe{
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    text-decoration: none;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    z-index: 310;
+    background-color: white;
+    width: 100%;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0, .2);
+    padding: 5px 0px 0px 0px;
+}
+
+.headerMe img{
+    width: 70px;
+    height: 50px;
+}
+
+.headerMeIcons{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.headerMeSearchIcon, .headerMeChatIcon{
+    background-color: #f2f2f2;
+    padding: 5px;
+    margin: 0px 10px 0px 10px;
+    border-radius: 15px;
+}
+
+.postMe{
+    display: flex;
+    position: relative;
+    width: 90%;
+    height: 300px;
+    flex-basis: auto;
+    align-items: stretch;
+    flex-direction: column;
+    margin: 90px auto 0px auto;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.meAvatar{
+    width: 30px;
+    height: 30px;
+    border-radius: 40px;
+}
+
+
+.postMe::before{
+    content: "";
+    width: 100%;
+    position: absolute;
+    height: 250px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0px 0px 10px 0px;
+    background-color: transparent;
+}
+.postMe:hover::before{
+    cursor: pointer;
+}
+
+.postMeTop{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+
+.postMeTop a{
+    margin-right: 15px;
+    margin-left: 10px;
+}
+
+.postMeTop select{
+    height: 20px;
+}
+
+.postMe textarea{
+    font-size: large;
+    border: none;
+    resize: none;
+    min-height: 50px;
+    border-bottom: 1px solid #ccc;
+}
+.postMe textarea:focus{
+    outline: none;
+}
+
+.postMeIcons label{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 5px 10px 5px 5px;
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    font-size: 12px;
+    margin: 10px 0px 0px 5px;
+    border: 0;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+.postMeIcons label:hover{
+    cursor: pointer;
+    background-color: #f2f2f2;
+}
+
+.postMeIcons label span{
+    margin-left: 10px;
+}

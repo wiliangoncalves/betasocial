@@ -1,0 +1,17 @@
+#handleSuccess{
+    width: 100%;
+    z-index: 355;
+    background-color: #198754;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+}
+
+.closeMessageSuccess{
+    margin-left: 30px;
+    font-size: 22px;
+}
+.closeMessageSuccess:hover{
+    cursor: pointer;
+    background-color: red;
+}

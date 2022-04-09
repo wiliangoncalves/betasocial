@@ -1,0 +1,43 @@
+aside, .videoContainer{
+    display: none;
+}
+
+aside h2{
+    margin-top: 0px;
+}
+
+@media screen and (min-width: 900px){
+    .videoContainer{
+        display: block;
+        margin-bottom: 50px;
+    }
+
+    aside{
+        position: absolute;
+        display: block;
+        top: 100px;
+        right: 0px;
+        width: 150px;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #fff;
+    }
+}
+
+@media screen and (min-width: 1025px){
+    aside{
+        width: 220px;
+        right: 10px;
+    }
+
+    .IconsContainer a{
+        padding: 15px 0px 15px 0px;        
+    }
+}
+
+@media screen and (min-width: 1200px){
+    aside{
+        width: 280px;
+        right: 15px;
+    }
+}

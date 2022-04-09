@@ -1,0 +1,132 @@
+header{
+    position: fixed;
+    top: 0;
+    z-index: 310;
+    background-color: white;
+    width: 100%;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0, .2);
+    padding: 5px 0px 15px 0px;
+    overflow: hidden;
+}
+
+/* img{
+    width: 65px;
+    height: 45px;
+} */
+
+/* .searchBar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchBar input{
+    padding: 5px 0px 5px 15px;
+    border: 0px solid #f0f0f0;
+    background-color: #f0f2f5;
+    border-radius: 5px;
+    height: 25px;
+    width: 60%;
+}
+.searchBar input:focus{
+    outline: 0;
+}
+
+.searchContainer{
+    display: flex;
+    width: 100%;
+    margin-left: 20px;
+    margin-top: 2px;
+}
+
+.searchGlass{
+    position: relative;
+    left: -20px;
+    top: -5px;
+}
+
+.searchBar a{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    outline: 0;
+} */
+
+.buttons{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-evenly;
+}
+.buttons a{
+    padding: 10px 40px 10px 40px;
+    border-radius: 10px;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+.login{
+    background-color: #fff;
+    border: 1px solid rgb(4, 128, 211);
+    color: rgb(4, 128, 211);
+}
+.login:hover{
+    color: white;
+    background-color: rgb(91, 181, 241);
+    border: 1px solid rgb(91, 181, 241);
+}
+
+.register{
+    border: 0;
+    background-color: rgb(91, 181, 241);
+    color: white;
+}
+.register:hover{
+    background-color: rgb(43, 95, 129);
+}
+
+/* @media screen and (min-width: 200px){
+    .searchBar input{
+        width: 220px;
+    }
+    .searchGlass{
+        left: -30px;
+    }
+} */
+
+/* @media screen and (min-width: 500px){
+    .searchBar input{
+        width: 50%;
+    }
+    img{
+        width: 80px;
+    }
+} */
+
+@media screen and (min-width: 700px){
+    .buttons{
+        justify-content: right;
+        margin-top: -45px;
+    }
+    .buttons a{
+        margin-right: 5px;
+    }
+}
+
+@media screen and (min-width: 800px) and (max-width: 900px){
+    .buttons a{
+        margin-right: 15px;
+    }
+
+    /* .searchBar{
+        margin-left: 50px;
+    } */
+}
+
+@media screen and (min-width: 900px){
+    .buttons a{
+        margin-right: 5%;
+    }
+
+    /* .searchBar{
+        margin-left: 50px;
+    } */
+}

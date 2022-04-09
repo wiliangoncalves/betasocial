@@ -1,0 +1,37 @@
+#handleError{
+    width: 100%;
+    z-index: 355;
+    background-color: #dc3545;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+}
+
+/* PhotoVideo.jsx */
+.err{
+    display: flex;
+    width: 100%;
+    z-index: 355;
+    position: fixed;
+    background-color: #ffc107;
+    color: #212529;
+    justify-content: center;
+    align-items: center;
+}
+.err span{
+    color: red;
+}
+.err span:hover{
+    color: #fff;
+}
+
+/* end PhotoVideo.jsx  */
+
+.closeMessageError{
+    margin-left: 30px;
+    font-size: 22px;
+}
+.closeMessageError:hover{
+    cursor: pointer;
+    background-color: red;
+}

@@ -1,0 +1,121 @@
+.Explore{
+    display: none;
+}
+
+.NavIconsContainer{
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.NavIconsContainer a{
+    width: 100%;
+    padding: 15px;
+    color: black;
+}
+
+.NavIconsContainer a:hover{
+    color: blue;
+}
+
+@media screen and (max-width: 410px){
+    .NavIconsContainer a{
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width: 768px){
+    nav p{
+        display: none;
+    }
+
+    nav a{
+        text-decoration: none;
+    }
+
+    .NavIconsContainer{
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+    .IconsContainer{
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 769px){
+    .NavIconsContainer{
+        background-color: transparent;
+    }
+
+    nav p{
+        display: block;
+    }
+    nav{
+        position: fixed;
+        left: 2%;
+        width: 200px; 
+        top: 100px;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    nav a{
+        text-decoration: none;
+        /* background-color: #c5c0c0; */
+    }
+
+    nav p {
+        border-bottom: 1px solid rgb(0,0,0, .3);
+        color: #5e5858;
+        padding-bottom: 15px;
+    }
+    
+    .IconsContainer{
+        background-color: #fff;
+        padding: 5px;
+        border-radius: 10px;
+        /* background-color: #c5c0c0; */
+        /* border: 2px solid orange; */
+    }
+
+    .IconsContainer a{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 1px;
+        margin-bottom: 1px;
+        box-sizing: border-box;
+        background-color: #f2f2f2;
+        
+    }
+    .IconsContainer a:hover, .Explore a:hover{
+        background-color: #fff;
+        /* background-color: #fff; */
+        border-radius: 5px;
+        height: 1px;
+        border-left: 5px solid blue;
+    }
+
+    .Explore{
+        display: block;
+        margin-top: 60px;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+    .Explore a{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 1px;
+        margin-bottom: 1px;
+        box-sizing: border-box;
+        background-color: #f2f2f2;
+    }
+
+    .appsIcon{
+        margin-left: -15px;
+    }
+}

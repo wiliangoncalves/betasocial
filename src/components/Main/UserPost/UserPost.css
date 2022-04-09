@@ -1,0 +1,112 @@
+.userPost{
+    display: flex;
+    position: relative;
+    width: 85%;
+    flex-basis: auto;
+    align-items: stretch;
+    flex-direction: column;
+    z-index: 0;
+    margin: 50px auto 0px auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.userPostInfo span{
+    display: flex;
+    font-size: 14px;
+    margin-top: -25px;
+    margin-left: 60px;
+}
+
+.userPostInfo a{
+    border-radius: 20px;
+    height: 50px;
+    width: 50px;
+}
+.userPostInfo img{
+    border-radius: 20px;
+    height: 50px;
+    width: 50px;
+}
+
+.userPostName{
+    display: flex;
+    align-items: center;
+}
+
+.userPostName p{
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+.userPostName p a{
+    text-decoration: none;
+}
+
+.UserIcons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+.UserIcons a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding-left: 20px;
+    margin-left: -25px;
+}
+
+.userPostText{
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.3125;
+    color: #2d3436;
+    overflow: auto;
+}
+
+
+
+@media screen and (min-width: 320px){
+    .userPost{
+        top: 100px;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 410px){
+    .UserIcons a p{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .userPost{
+        width: 50%;
+        margin: 0px 10% 30px auto;
+    }
+
+    /* .UserIcons a{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        padding-left: 20px;
+        margin-left: -25px;
+    } */
+}
+
+@media screen and (min-width: 900px){
+    .userPost{
+        margin-right: 22%;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .userPost{
+        margin: 0 27% 30px auto;
+    }
+}

@@ -1,0 +1,91 @@
+.myPostContainer{
+    margin: 0;
+    padding: 0;
+}
+
+.myPostTop{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #fff;
+}
+.myPost{
+    margin: 15px auto 0px auto;
+    height: fit-content;
+    width: 95%;
+}
+
+.myPostTop a:hover{
+    cursor: pointer;
+}
+
+.myPostMeIcons button{
+    padding: 20px 10px 5px 5px;
+    margin: 10px 0px 0px 5px;
+}
+
+.postMe::before{
+    display: none;
+}
+
+.myPost textarea{
+    font-size: large;
+    border: none;
+    resize: none;
+    height: 250px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    top: 0;
+}
+
+.btnPostTop{
+    border: 0;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: gray;
+    color: white;
+    font-size: 15px;
+}
+
+.btn-post{
+    width: 95%;
+    color: white;
+    background-color: gray;
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: -15px;
+}
+.btn-post:hover, .btnPostTop:hover{
+    cursor: pointer;
+    background-color: gray;
+}
+
+.preview{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #ccc;
+}
+
+.contentPreview{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0px 0px 15px 0px;
+    flex-wrap: wrap;
+}
+
+.contentPreview img, .contentPreview video{
+    margin-bottom: 20px;
+}
+
+.photoPreview{
+    width: 200px;
+    height: 200px;
+}
+
+.videoPreview{
+    width: 250px;
+    height: 200px;
+}

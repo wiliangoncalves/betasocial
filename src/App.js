@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
+import Login from "./components/Header/Login/Login";
+import Register from "./components/Header/Register/Register";
+
+import Auth from "./components/Auth/Auth";
+import Me from "./components/Me/Me";
+import MyPost from "./components/Me/MyPost/MyPost";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Header /> */}
+      {/* <Main /> */}
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Main />} />
+
+          <Route path="/register" element={<Register />} />
+
+          <Route exact path="/login" element={<Login />} />
+
+          {/* <Route exact path="/protected" element={<Auth />} /> */}
+
+          <Route exact path="/me/*" element={<Auth display={{display: "none"}}><Me /></Auth>} />
+          <Route exact path="/mypost/*" element={<Auth display={{display: "none"}}><MyPost /></Auth>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
