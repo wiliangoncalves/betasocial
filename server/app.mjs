@@ -4,7 +4,6 @@ import cors from "cors";
 import path from 'path';
 import {fileURLToPath} from 'url';
 
-
 //Routes import
 import Login from "./routes/Login.mjs";
 import Register from "./routes/Register.mjs";
@@ -24,6 +23,10 @@ app.use(express.json());
 app.use(cors());
 
 app.use(express.static(publicPath));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(publicPath, 'index.html'));
+ }); 
 
 //Routes config
 app.use("/login", Login);
