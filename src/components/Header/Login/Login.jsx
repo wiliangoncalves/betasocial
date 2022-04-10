@@ -18,8 +18,10 @@ export default function Login(){
             headers: {
                 Authentication: 'Bearer ZSgpJBQoWDwD7b9EfLjz7D6q',
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": true
+                "Access-Control-Allow-Origin": "https://betasocial.vercel.app",
+                "Access-Control-Allow-Methods": "POST",
+                "Access-Control-Allow-Headers": "*",
+                "Access-Control-Max-Age": 86400
             },
             mode: 'cors',
             body: JSON.stringify({email, password})
