@@ -5,6 +5,8 @@ export const HandleTextArea = e => {
 
         document.querySelector(".btn-post").style.backgroundColor = "rgb(91, 181, 241)";
         document.querySelector(".btn-post").disabled = false;
+
+        document.querySelector(".textArea").innerHTML = e.target.value;
     }else{
         document.querySelector(".btnPostTop").style.backgroundColor = "gray";
         document.querySelector(".btnPostTop").disabled = true;

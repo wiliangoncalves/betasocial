@@ -14,7 +14,6 @@ import { IoIosWarning } from "react-icons/io";
 import { MdVisibility } from "react-icons/md";
 // import { MdVisibilityOff } from "react-icons/md";
 
-
 // Post Options imports
 import { HandlePhotoVideo } from "./PhotoVideo/PhotoVideo";
 import { HandleTextArea } from "./TextArea/TextArea";
@@ -69,7 +68,7 @@ export default function MyPost(){
                         <span>Emoji</span>
                         {/* <span id="emojiPost" style={{display: "none"}} ></span> */}
                     </label>
-                        <HandleEmoji />
+                    <HandleEmoji />
 
                     <label htmlFor="pollPost">
                         <FaPoll size={20} color="#f87e3a" />
