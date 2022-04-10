@@ -4,6 +4,13 @@ import db from "../config/database.mjs";
 
 const Login = express();
 
+Login.get("/", (req, res) => {
+    res.send({
+        code: res.statusCode,
+        message: "OLHA AQUI"
+    });
+})
+
 Login.post("/", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
