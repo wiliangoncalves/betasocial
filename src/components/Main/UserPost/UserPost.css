@@ -107,6 +107,6 @@
 
 @media screen and (min-width: 1024px){
     .userPost{
-        margin: 0 27% 30px auto;
+        margin: 0 auto 30px auto;
     }
 }
