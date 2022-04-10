@@ -25,7 +25,8 @@ app.use(cors());
 app.use(express.static(publicPath));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(publicPath, 'index.html'));
+    res.send("OLHA O SERVIDOR!")
+    // res.sendFile(path.join(publicPath, 'index.html'));
  }); 
 
 //Routes config
