@@ -12,7 +12,7 @@ aside h2{
         margin-bottom: 50px;
     }
 
-    aside{
+    aside:not(.emoji-picker-react){
         position: absolute;
         display: block;
         top: 100px;
@@ -25,7 +25,7 @@ aside h2{
 }
 
 @media screen and (min-width: 1025px){
-    aside{
+    aside:not(.emoji-picker-react){
         width: 220px;
         right: 10px;
     }
@@ -36,7 +36,7 @@ aside h2{
 }
 
 @media screen and (min-width: 1200px){
-    aside{
+    aside:not(.emoji-picker-react){
         width: 280px;
         right: 15px;
     }

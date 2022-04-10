@@ -14,7 +14,6 @@ export default function HandleEmoji(props){
         e.preventDefault();
     };
 
-
     const HandleEmojiClosed = e => {
         document.getElementById("EmojiContainer").style.display = "none";
     }

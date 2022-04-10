@@ -50,7 +50,7 @@
     nav p{
         display: block;
     }
-    nav{
+    nav:not(.emoji-categories){
         position: fixed;
         left: 2%;
         width: 200px; 
