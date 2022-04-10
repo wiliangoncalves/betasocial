@@ -13,7 +13,7 @@ export default function Login(){
     const PORT = process.env.PORT;
     
     const handleLogin = (e) => {
-        fetch(`http://localhost:${PORT}/login`, {
+        fetch(`https://betasocial.vercel.app:${PORT}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
