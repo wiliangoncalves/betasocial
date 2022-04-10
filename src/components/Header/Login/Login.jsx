@@ -16,7 +16,7 @@ export default function Login(){
         fetch("https://api.vercel.com/v6/deployments?teamId=prj_FOl4QAGIFspp1F8NKOSj4xdKjMPv/login", {
             method: "POST",
             headers: {
-                Authorization: `Bearer ZSgpJBQoWDwD7b9EfLjz7D6q`,
+                Authorization: `Bearer ${process.env.VERCEL_ACCESS_TOKEN}`,
                 "Content-Type": "application/json"
             },
             mode: 'cors',
