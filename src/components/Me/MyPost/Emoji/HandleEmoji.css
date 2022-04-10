@@ -1,0 +1,19 @@
+#EmojiContainer{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+#EmojiContainer h2{
+    margin: 0;
+    /* background-color: red; */
+}
+
+#EmojiContainer h2:hover{
+    cursor: pointer;
+}

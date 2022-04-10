@@ -18,6 +18,7 @@ import { MdVisibility } from "react-icons/md";
 // Post Options imports
 import { HandlePhotoVideo } from "./PhotoVideo/PhotoVideo";
 import { HandleTextArea } from "./TextArea/TextArea";
+import HandleEmoji from "./Emoji/HandleEmoji";
 
 export default function MyPost(){
 
@@ -61,11 +62,14 @@ export default function MyPost(){
                         <input type="file"  id="photoVideo" accept="video/mp4,image/png, image/jpeg, image/jpg" onChange={HandlePhotoVideo} multiple style={{display: "none"}} data-max-size="32154" />
                     </label>
 
-                    <label htmlFor="emojiPost">
+                    <label htmlFor="emojiPost"  onClick={() => {
+                        document.getElementById("EmojiContainer").style.display = "block";
+                    }} >
                         <BsEmojiSmile size={20} color="#f6b83c" />
                         <span>Emoji</span>
-                        <input type="file"  id="emojiPost" style={{display: "none"}} />
+                        {/* <span id="emojiPost" style={{display: "none"}} ></span> */}
                     </label>
+                        <HandleEmoji />
 
                     <label htmlFor="pollPost">
                         <FaPoll size={20} color="#f87e3a" />
