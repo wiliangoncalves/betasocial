@@ -18,8 +18,7 @@ export default function Login(){
             headers: {
                 Authentication: 'Bearer ZSgpJBQoWDwD7b9EfLjz7D6q',
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Headers": "X-Custom-Header"
-
+                "Access-Control-Allow-Origin": "*"
             },
             mode: 'cors',
             body: JSON.stringify({email, password})
