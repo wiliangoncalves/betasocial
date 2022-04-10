@@ -7,14 +7,21 @@ const Login = express();
 Login.post("/", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
+
+    if(res.statusCode === 403){
+        res.status(404).send({
+            code: res.statusCode,
+            message: "DEU RUIM"
+        });
+    };
     
-    if(email.length < 5 || email.trim() == ""){
+    if(email.length < 5 || email.trim() === ""){
         return res.status(400).send({
             message: "Por favor, preencha o E-mail corretamente!",
             status: res.statusCode
         });
     };
-    if(password.length < 5 || password.trim() == ""){
+    if(password.length < 5 || password.trim() === ""){
         return res.status(400).send({
             message: "Por favor, preencha a senha corretamente!",
             status: res.statusCode
