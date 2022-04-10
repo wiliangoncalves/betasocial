@@ -12,7 +12,7 @@ export default function Login(){
     const pass = useNavigate();
     
     const handleLogin = (e) => {
-        fetch(`http://localhost:3080/login`, {
+        fetch(`http://localhost:8080/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
