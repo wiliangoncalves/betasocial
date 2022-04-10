@@ -16,12 +16,8 @@ export default function Login(){
         fetch(`https://api.vercel.com/v6/deployments?teamId=[prj_FOl4QAGIFspp1F8NKOSj4xdKjMPv]/login`, {
             method: "POST",
             headers: {
-                Authentication: 'Bearer ZSgpJBQoWDwD7b9EfLjz7D6q',
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "https://betasocial.vercel.app",
-                "Access-Control-Allow-Methods": "POST",
-                "Access-Control-Allow-Headers": "*",
-                "Access-Control-Max-Age": 86400
+                "Authorization": "Bearer ZSgpJBQoWDwD7b9EfLjz7D6q",
+                "Content-Type": "application/json"
             },
             mode: 'cors',
             body: JSON.stringify({email, password})
