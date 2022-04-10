@@ -13,7 +13,7 @@ export default function Login(){
     const PORT = process.env.PORT;
     
     const handleLogin = (e) => {
-        fetch("http://localhost:3000/login", {
+        fetch(`http://localhost:${PORT}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -21,7 +21,7 @@ export default function Login(){
             mode: 'cors',
             body: JSON.stringify({email, password})
         })
-        .then(res => JSON.stringify(res))
+        .then(res => res.json())
         .then(res => {
             let token = res.token;
            
