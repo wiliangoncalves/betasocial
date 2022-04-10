@@ -12,7 +12,7 @@ export default function Login(){
     const pass = useNavigate();
     
     const handleLogin = (e) => {
-        fetch(`http://localhost:3000/login`, {
+        fetch("https://tariqa.herokuapp.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

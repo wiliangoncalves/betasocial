@@ -31,7 +31,7 @@ export default function Me(){
     // const handleCostumer = document.querySelector(".costumerIcon");
 
     useEffect(() => {
-        fetch("http://192.168.0.109:3080/me", {
+        fetch("https://tariqa.herokuapp.com/me", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
