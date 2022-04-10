@@ -16,13 +16,12 @@ export default function Login(){
         fetch("https://betasocial.vercel.app/login", {
             method: "POST",
             headers: {
-                Authorization: `Bearer ${process.env.VERCEL_ACCESS_TOKEN}`,
                 "Content-Type": "application/json"
             },
             mode: 'cors',
             body: JSON.stringify({email, password})
         })
-        .then(res => res.json())
+        .then(res => JSON.stringify(res))
         .then(res => {
             let token = res.token;
            
