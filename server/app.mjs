@@ -11,7 +11,7 @@ import Me from "./routes/Me.mjs";
 import MyPost from "./routes/MyPost.mjs";
 
 const app = express();
-const port = process.env.PORT || 3080;
+const port = 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const publicPath = path.join(__dirname, '..', 'public');
