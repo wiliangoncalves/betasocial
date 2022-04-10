@@ -96,3 +96,9 @@
         width: 50%;
     }
 }
+
+@media screen and (min-width: 1024px){
+    .postMe{
+        margin: 90px 27% 30px auto;
+    }
+}
