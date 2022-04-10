@@ -13,15 +13,16 @@ export default function Login(){
     const PORT = process.env.PORT;
     
     const handleLogin = (e) => {
-        fetch(`https://betasocial.vercel.app/login`, {
+        fetch(`https://api.vercel.com/v6/deployments?teamId=[prj_FOl4QAGIFspp1F8NKOSj4xdKjMPv]/login`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                Authentication: 'Bearer ZSgpJBQoWDwD7b9EfLjz7D6q',
+                "Content-Type": "application/json",
             },
             mode: 'cors',
             body: JSON.stringify({email, password})
         })
-        .then(res => JSON.stringify(res))
+        .then(res => res.json())
         .then(res => {
             let token = res.token;
            
