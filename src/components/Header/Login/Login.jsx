@@ -21,7 +21,7 @@ export default function Login(){
             mode: 'cors',
             body: JSON.stringify({email, password})
         })
-        .then(res => res.json())
+        .then(res => JSON.stringify(res))
         .then(res => {
             let token = res.token;
            

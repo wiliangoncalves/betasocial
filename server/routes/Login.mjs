@@ -1,9 +1,8 @@
 import express from "express";
 import jwt from "jsonwebtoken";
+import db from "../config/database.mjs";
 
 const Login = express();
-
-import db from "../config/database.mjs";
 
 Login.post("/", (req, res) => {
     const email = req.body.email;
