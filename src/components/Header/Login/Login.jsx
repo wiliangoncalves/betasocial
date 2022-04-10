@@ -13,10 +13,10 @@ export default function Login(){
     const PORT = process.env.PORT;
     
     const handleLogin = (e) => {
-        fetch(`https://api.vercel.com/v6/deployments?teamId=prj_FOl4QAGIFspp1F8NKOSj4xdKjMPv/login`, {
+        fetch("https://api.vercel.com/v6/deployments?teamId=prj_FOl4QAGIFspp1F8NKOSj4xdKjMPv/login", {
             method: "POST",
             headers: {
-                "Authorization": "Bearer ZSgpJBQoWDwD7b9EfLjz7D6q",
+                Authorization: `Bearer ZSgpJBQoWDwD7b9EfLjz7D6q`,
                 "Content-Type": "application/json"
             },
             mode: 'cors',
