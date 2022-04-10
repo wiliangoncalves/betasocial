@@ -92,7 +92,7 @@
 
 @media screen and (min-width: 768px){
     .postMe{
-        margin: 0 10% 30px auto;
+        margin: 15px 10% 30px auto;
         width: 50%;
     }
 }
