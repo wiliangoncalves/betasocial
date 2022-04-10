@@ -10,9 +10,10 @@ export default function Login(){
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const pass = useNavigate();
+    const PORT = process.env.PORT;
     
     const handleLogin = (e) => {
-        fetch("http://192.168.0.109:3080/login", {
+        fetch(`http://localhost:${PORT}:/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
