@@ -76,6 +76,19 @@
     flex-wrap: wrap;
 }
 
+.containerPreview{
+    display: flex;
+}
+
+.removePreviewItem{
+    position: absolute;
+    z-index: 315;
+}
+.removePreviewItem:hover{
+    cursor: pointer;
+    color: red;
+}
+
 .contentPreview img, .contentPreview video{
     margin-bottom: 20px;
 }
@@ -100,5 +113,8 @@
 @media screen and (min-width: 1024px){
     .postMe{
         margin: 90px 25.5% 30px auto;
+    }
+    .myPostTop{
+        margin-bottom: -70px;
     }
 }

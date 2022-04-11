@@ -41,6 +41,8 @@ export const HandlePhotoVideo = e => {
     else{
         for(let i = 0; i < fileName.files.length; i++){
             let preview;
+            let removePreview = document.createElement("span");
+            let containerPreview = document.createElement("div");
             let contentPreview = document.querySelector(".contentPreview");
 
             fileExtension = fileName.files[i].name.slice(fileName.files[i].name.indexOf("."));
@@ -83,7 +85,15 @@ export const HandlePhotoVideo = e => {
                         preview.setAttribute("class", "photoPreview");
                         preview.setAttribute("draggable", "false");
 
-                        contentPreview.appendChild(preview);
+                        containerPreview.setAttribute("class", "containerPreview");
+
+                        removePreview.setAttribute("class", "removePreviewItem");
+                        removePreview.innerHTML = "X";
+
+                        containerPreview.appendChild(removePreview);
+                        containerPreview.appendChild(preview);
+                        
+                        contentPreview.appendChild(containerPreview);
                     }
                 });
             }
@@ -128,16 +138,25 @@ export const HandlePhotoVideo = e => {
                         preview.controls = true;
                         preview.autoplay = false;
 
-                        contentPreview.appendChild(preview);
+                        
+                        removePreview.setAttribute("class", "removePreviewItem");
+                        removePreview.innerHTML = "X";
+                        
+                        containerPreview.setAttribute("class", "containerPreview");
+
+                        containerPreview.appendChild(removePreview);
+                        containerPreview.appendChild(preview);
+                        
+                        contentPreview.appendChild(containerPreview);
                     }
                 });
             }
             
-            document.querySelector(".contentPreview button").addEventListener("click", e => {
+            document.querySelector(".removePreviewItem").addEventListener("click", e => {
                 contentPreview.childNodes.forEach(e => {
                     if(e.contains(preview)){
                         window.URL.revokeObjectURL(preview.src);
-                        contentPreview.removeChild(preview);
+                        contentPreview.removeChild(containerPreview);
 
                         fileName.value = "";
                     }

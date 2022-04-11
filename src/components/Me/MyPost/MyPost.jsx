@@ -53,7 +53,6 @@ export default function MyPost(){
                     </textarea>
 
                     <div className="contentPreview">
-                        <button>tirar foto ou video!</button>
                     </div>
                 </div>
 
