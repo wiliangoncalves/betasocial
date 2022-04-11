@@ -81,8 +81,9 @@
 }
 
 .removePreviewItem{
-    position: absolute;
+    position: relative;
     z-index: 315;
+    right: 10px;
 }
 .removePreviewItem:hover{
     cursor: pointer;
