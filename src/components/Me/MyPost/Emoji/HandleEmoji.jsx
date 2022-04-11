@@ -6,10 +6,10 @@ import "./HandleEmoji.css";
 export default function HandleEmoji(props){
     const [chosenEmoji, setChosenEmoji] = useState(null);
 
-    let oi = document.createElement("span");
-
     const onEmojiClick = (e, emojiObject) => {
         setChosenEmoji(emojiObject);
+
+        document.querySelector(".textArea").innerHTML = chosenEmoji.emoji;
 
         e.preventDefault();
     };
@@ -19,12 +19,12 @@ export default function HandleEmoji(props){
     }
 
     return (
-    <div id="EmojiContainer">
-        <h2 onClick={HandleEmojiClosed}>Fechar X</h2>
+        <div id="EmojiContainer">
+            <h2 onClick={HandleEmojiClosed}>Fechar X</h2>
 
-        {chosenEmoji ? ( <span>Você escolheu: {chosenEmoji.emoji}</span>) : (<span>Nenhum emoji selecionado!</span>)}
+            {chosenEmoji ? ( <span>Você escolheu: {chosenEmoji.emoji}</span>) : (<span>Nenhum emoji selecionado!</span>)}
 
-        <Picker onEmojiClick={onEmojiClick} />
-    </div>
+            <Picker onEmojiClick={onEmojiClick} />
+        </div>
     );
 }
