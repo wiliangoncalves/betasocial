@@ -153,7 +153,7 @@ export const HandlePhotoVideo = e => {
                     }
                 });
             }
-            
+
             removePreviewPhoto.addEventListener("click", e => {
                 contentPreview.childNodes.forEach(e => {
                     if(e.contains(previewPhoto)){
@@ -176,8 +176,6 @@ export const HandlePhotoVideo = e => {
 
                         containerPreview.removeChild(previewVideo);
                         containerPreview.remove(removePreviewVideo);
-
-                        contentPreview.removeChild(containerPreview);
 
                         fileName.value = "";
                     }

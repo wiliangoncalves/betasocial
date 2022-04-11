@@ -53,6 +53,7 @@ export default function MyPost(){
                     </textarea>
 
                     <div className="contentPreview containerPreview">
+                        <HandleEmoji />
                     </div>
                 </div>
 
@@ -71,7 +72,6 @@ export default function MyPost(){
                         <span>Emoji</span>
                         {/* <span id="emojiPost" style={{display: "none"}} ></span> */}
                     </label>
-                    <HandleEmoji />
 
                     <label htmlFor="pollPost">
                         <FaPoll size={20} color="#f87e3a" />

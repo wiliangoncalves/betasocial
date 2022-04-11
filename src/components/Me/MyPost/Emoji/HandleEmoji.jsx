@@ -18,7 +18,7 @@ export default function HandleEmoji(props){
         <div id="EmojiContainer">
             <h2 onClick={HandleEmojiClosed}>Fechar X</h2>
 
-            <Picker onEmojiClick={onEmojiClick} />
+            <Picker onEmojiClick={onEmojiClick} id="p" />
         </div>
     );
 }
