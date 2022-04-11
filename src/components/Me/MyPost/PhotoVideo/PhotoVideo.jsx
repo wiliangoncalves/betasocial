@@ -40,15 +40,24 @@ export const HandlePhotoVideo = e => {
     }
     else{
         for(let i = 0; i < fileName.files.length; i++){
-            let preview;
-            let removePreview = document.createElement("span");
+            let previewPhoto;
+            let previewVideo;
+
+            let removePreviewPhoto = document.createElement("span");
+            removePreviewPhoto.setAttribute("class", "removePreviewImg");
+            removePreviewPhoto.innerHTML = "X";
+
+            let removePreviewVideo = document.createElement("span");
+            removePreviewVideo.setAttribute("class", "removePreviewVideo");
+            removePreviewVideo.innerHTML = "X";
+
             let containerPreview = document.createElement("div");
             let contentPreview = document.querySelector(".contentPreview");
 
             fileExtension = fileName.files[i].name.slice(fileName.files[i].name.indexOf("."));
 
             if(fileExtension === ".PNG" || fileExtension === ".jpg" || fileExtension === ".jpeg"){
-                preview = new Image();
+                previewPhoto = new Image();
 
                 document.querySelectorAll(".contentPreview").forEach(e => {
                     if(e.childElementCount >= 3){
@@ -81,17 +90,14 @@ export const HandlePhotoVideo = e => {
                         return;
                     }
                     else{
-                        preview.src = URL.createObjectURL(file);
-                        preview.setAttribute("class", "photoPreview");
-                        preview.setAttribute("draggable", "false");
+                        previewPhoto.src = URL.createObjectURL(file);
+                        previewPhoto.setAttribute("class", "photoPreview");
+                        previewPhoto.setAttribute("draggable", "false");
 
                         containerPreview.setAttribute("class", "containerPreview");
 
-                        removePreview.setAttribute("class", "removePreviewItem");
-                        removePreview.innerHTML = "X";
-
-                        containerPreview.appendChild(removePreview);
-                        containerPreview.appendChild(preview);
+                        containerPreview.appendChild(removePreviewPhoto);
+                        containerPreview.appendChild(previewPhoto);
                         
                         contentPreview.appendChild(containerPreview);
                     }
@@ -99,7 +105,7 @@ export const HandlePhotoVideo = e => {
             }
 
             if(fileExtension === ".mp4"){
-                preview = document.createElement("video");
+                previewVideo = document.createElement("video");
 
                 document.querySelectorAll(".contentPreview").forEach(e => {
                     if(e.childElementCount >= 3){
@@ -132,30 +138,45 @@ export const HandlePhotoVideo = e => {
                         return;
                     }
                     else{
-                        preview.src = URL.createObjectURL(file);
-                        preview.setAttribute("class", "videoPreview");
-                        preview.setAttribute("draggable", "false");
-                        preview.controls = true;
-                        preview.autoplay = false;
-
-                        
-                        removePreview.setAttribute("class", "removePreviewItem");
-                        removePreview.innerHTML = "X";
+                        previewVideo.src = URL.createObjectURL(file);
+                        previewVideo.setAttribute("class", "videoPreview");
+                        previewVideo.setAttribute("draggable", "false");
+                        previewVideo.controls = true;
+                        previewVideo.autoplay = false;
                         
                         containerPreview.setAttribute("class", "containerPreview");
 
-                        containerPreview.appendChild(removePreview);
-                        containerPreview.appendChild(preview);
+                        containerPreview.appendChild(removePreviewVideo);
+                        containerPreview.appendChild(previewVideo);
                         
                         contentPreview.appendChild(containerPreview);
                     }
                 });
             }
             
-            document.querySelector(".removePreviewItem").addEventListener("click", e => {
+            removePreviewPhoto.addEventListener("click", e => {
                 contentPreview.childNodes.forEach(e => {
-                    if(e.contains(preview)){
-                        window.URL.revokeObjectURL(preview.src);
+                    if(e.contains(previewPhoto)){
+                        window.URL.revokeObjectURL(previewPhoto.src);
+
+                        containerPreview.removeChild(previewPhoto);
+                        containerPreview.removeChild(removePreviewPhoto)
+
+                        contentPreview.removeChild(containerPreview);
+
+                        fileName.value = "";
+                    }
+                });
+            });
+
+            removePreviewVideo.addEventListener("click", e => {
+                contentPreview.childNodes.forEach(e => {
+                    if(e.contains(previewVideo)){
+                        window.URL.revokeObjectURL(previewVideo.src);
+
+                        containerPreview.removeChild(previewVideo);
+                        containerPreview.remove(removePreviewVideo);
+
                         contentPreview.removeChild(containerPreview);
 
                         fileName.value = "";

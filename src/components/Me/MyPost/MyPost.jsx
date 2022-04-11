@@ -52,7 +52,7 @@ export default function MyPost(){
                         
                     </textarea>
 
-                    <div className="contentPreview">
+                    <div className="contentPreview containerPreview">
                     </div>
                 </div>
 

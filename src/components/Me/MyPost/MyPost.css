@@ -80,12 +80,17 @@
     display: flex;
 }
 
-.removePreviewItem{
+.removePreviewImg{
     position: relative;
     z-index: 315;
-    right: 10px;
+    right: -15px;
 }
-.removePreviewItem:hover{
+.removePreviewVideo{
+    position: relative;
+    z-index: 315;
+    right: 0px;
+}
+.removePreviewVideo:hover, .removePreviewImg:hover{
     cursor: pointer;
     color: red;
 }
