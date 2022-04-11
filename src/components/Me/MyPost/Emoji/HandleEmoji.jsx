@@ -9,13 +9,18 @@ export default function HandleEmoji(props){
     const onEmojiClick = (e, emojiObject) => {
         setChosenEmoji(emojiObject);
 
-        document.querySelector(".textArea").innerHTML = chosenEmoji.emoji;
-
         e.preventDefault();
     };
 
     const HandleEmojiClosed = e => {
         document.getElementById("EmojiContainer").style.display = "none";
+    }
+
+    if(chosenEmoji !== null){
+        console.log("Tem conteúdo!");
+        document.querySelector(".textArea").innerHTML = chosenEmoji.emoji;
+    }else{
+        console.log("Não tem conteúdo!");
     }
 
     return (

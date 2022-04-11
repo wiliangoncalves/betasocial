@@ -20,6 +20,10 @@ import { HandleTextArea } from "./TextArea/TextArea";
 import HandleEmoji from "./Emoji/HandleEmoji";
 
 export default function MyPost(){
+    // let local = window.location.href;
+    // if(local.includes("/mypost")){
+    //     document.getElementById("postMe").style.margin = "20px 25.5% 30px auto;";
+    // }
 
     return(
         <div className="myPostContainer">
