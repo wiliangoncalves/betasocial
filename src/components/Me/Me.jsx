@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 import "./Me.css";
 
 import Logo from "../../img/Logo.png";
-import DefaultAvatar from "../../img/avatars/defaultAvatar.png";
+import DefaultAvatar from "./img/defaultAvatar.png";
+import Avatar from "./img/cooper.jpg";
 
 import UserPost from "../Main/UserPost/UserPost";
 import Nav from "../Nav/Nav";
-
+import Profile from "./Profile/Profile";
 
 // HeaderMe Icons
 import { AiOutlineSearch } from "react-icons/ai";
@@ -60,12 +61,14 @@ export default function Me(){
                 <div className="headerMeIcons">
                     <a href="/search"><AiOutlineSearch size={30} color="#2d3436" className="headerMeSearchIcon" /></a>
                     <a href="/chat"><AiFillMessage size={30} color="#2d3436" className="headerMeChatIcon" /></a>
+
+                    <a href="/profile" className="meAvatarHeader"> <img src={Avatar || DefaultAvatar} alt="meAvatar" className="meAvatar" /> </a>
                 </div>
             </div>
 
             <div className="postMe" id="postMe" onClick={handlePost}>
                 <div className="postMeTop">
-                    <a href="/"> <img src={DefaultAvatar} alt="meAvatar" className="meAvatar" /> </a>
+                    <a href="/me"> <img src={Avatar || DefaultAvatar} alt="meAvatar" className="meAvatar" /> </a>
                     <select>
                         <option value="0">selecionar postagem</option>
                         <option value="1">postar na timeline</option>

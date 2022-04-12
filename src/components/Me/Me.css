@@ -50,9 +50,22 @@
 }
 
 .meAvatar{
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border-radius: 40px;
+}
+
+.meAvatar:not(.meAvatarHeader img){
+    margin: 0px 20px 2px 1px;
+}
+
+.meAvatarHeader img{
+    height: 40px;
+    width: 40px;
+}
+.meAvatarHeader{
+    margin-left: 15px;
+    margin-right: 5px;
 }
 
 

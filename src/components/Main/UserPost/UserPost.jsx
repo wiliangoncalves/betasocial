@@ -5,7 +5,7 @@ import TankianFoto from "./tankian.jpeg";
 import MaxFoto from "./max.jpeg";
 import BruceFoto from "./bruce.jpeg";
 import StevFoto from "./stev.jpeg";
-import CooperFoto from "./wilian.jpeg";
+import CooperFoto from "./cooper.jpg";
 
 import {BiWorld} from "react-icons/bi";
 import {AiOutlineLike} from "react-icons/ai";

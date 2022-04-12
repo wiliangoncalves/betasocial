@@ -2,7 +2,8 @@ import React from "react";
 
 import "./MyPost.css";
 
-import DefaultAvatar from "../../../img/avatars/defaultAvatar.png";
+import DefaultAvatar from "../img/defaultAvatar.png";
+import Avatar from "../img/cooper.jpg";
 
 import { MdArrowBackIosNew } from "react-icons/md";
 
@@ -39,7 +40,7 @@ export default function MyPost(){
 
             <div className="postMe myPost" id="postMe">
                 <div className="postMeTop">
-                    <a href="/"> <img src={DefaultAvatar} alt="meAvatar" className="meAvatar" /> </a>
+                    <img src={Avatar || DefaultAvatar} alt="meAvatar" className="meAvatar" draggable="false" />
                     <select>
                         <option value="0">selecionar postagem</option>
                         <option value="1">postar na timeline</option>
