@@ -4,18 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 import "./Me.css";
 
-import Logo from "../../img/Logo.png";
 import DefaultAvatar from "./img/defaultAvatar.png";
 import Avatar from "./img/cooper.jpg";
 
+import SearchHeader from "./SearchHeader/SearchHeader";
 import UserPost from "../Main/UserPost/UserPost";
 import Nav from "../Nav/Nav";
 import Profile from "./Profile/Profile";
-
-// HeaderMe Icons
-import { AiOutlineSearch } from "react-icons/ai";
-import { AiFillMessage } from "react-icons/ai";
-
 
 // postMe Icons
 import { BsCardImage } from "react-icons/bs";
@@ -43,7 +38,7 @@ export default function Me(){
         .then(res => res.json())
         .then(res => {
             if(res.auth === true){
-                // document.getElementById("me").style.display = "block";
+                
             }
         })
         .catch(err => {if(err){console.log("Erro no catch do Me.jsx", err);}});
@@ -55,16 +50,7 @@ export default function Me(){
 
     return(
         <div id="me" >
-            <div className="headerMe">
-                <a href="/"> <img src={Logo} alt="Logo" /> </a>
-
-                <div className="headerMeIcons">
-                    <a href="/search"><AiOutlineSearch size={30} color="#2d3436" className="headerMeSearchIcon" /></a>
-                    <a href="/chat"><AiFillMessage size={30} color="#2d3436" className="headerMeChatIcon" /></a>
-
-                    <a href="/profile" className="meAvatarHeader"> <img src={Avatar || DefaultAvatar} alt="meAvatar" className="meAvatar" /> </a>
-                </div>
-            </div>
+            <SearchHeader />
 
             <div className="postMe" id="postMe" onClick={handlePost}>
                 <div className="postMeTop">

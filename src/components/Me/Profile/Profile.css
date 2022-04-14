@@ -1,0 +1,32 @@
+#profile{
+    margin-top: 90px;
+    width: 100%;
+}
+
+.mainProfile{
+    display: flex;
+    width: 100%;
+    margin: 0px auto 0px auto;
+    /* padding: 0px 15px 0px 200px; */
+    background-color: #fff;
+}
+
+.mainProfile img{
+    height: 100px;
+    width: 100px;
+}
+
+.profileUserName{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 0px 20px;
+}
+.profileUserName span{
+    padding: 10px 0px 5px 0px;
+}
+
+.btnEditProfile{
+    position: absolute;
+    right: 0;
+    margin-top: 50px;
+}
