@@ -5,6 +5,7 @@
 
 .mainProfile{
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     margin: 0px auto 0px auto;
     /* padding: 0px 15px 0px 200px; */
@@ -16,17 +17,61 @@
     width: 100px;
 }
 
+.mainProfile label:hover{
+    cursor: pointer;
+}
+
+.mainProfile label input{
+    display: none;
+}
+
 .profileUserName{
     display: flex;
     flex-direction: column;
     margin: 0px 0px 0px 20px;
 }
-.profileUserName span{
+.profileUserName > span{
     padding: 10px 0px 5px 0px;
 }
 
 .btnEditProfile{
-    position: absolute;
-    right: 0;
     margin-top: 50px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: #fff;
+    border-radius: 20px;
+    font-weight: 600;
+    border: 1px solid rgb(4, 128, 211);
+    color: rgb(4, 128, 211);;
+    outline: 0;
+    width: 150px;
+}
+.btnEditProfile:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #5495e9;
+}
+
+.pUsername{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.pProfile{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+@media screen and (min-width: 500px){
+    .btnEditProfile{
+        position: absolute;
+        right: 0;
+        margin-right: 15%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .mainProfile{
+        padding: 0px 15px 0px 100px;
+    }
 }

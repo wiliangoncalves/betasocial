@@ -20,7 +20,7 @@ export default function SearchHeader(){
                 <a href="/search"><AiOutlineSearch size={30} color="#2d3436" className="headerMeSearchIcon" /></a>
                 <a href="/chat"><AiFillMessage size={30} color="#2d3436" className="headerMeChatIcon" /></a>
 
-                <a href="/profile" className="meAvatarHeader"> <img src={Avatar || DefaultAvatar} alt="meAvatar" className="meAvatar" /> </a>
+                <a href="/profile" className="meAvatarHeader"> <img src={DefaultAvatar} alt="meAvatar" className="meAvatar" /> </a>
             </div>
         </div>
     );
