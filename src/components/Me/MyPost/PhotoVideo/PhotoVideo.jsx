@@ -56,7 +56,7 @@ export const HandlePhotoVideo = e => {
 
             fileExtension = fileName.files[i].name.slice(fileName.files[i].name.indexOf("."));
 
-            if(fileExtension === ".PNG" || fileExtension === ".jpg" || fileExtension === ".jpeg"){
+            if(fileExtension === ".PNG" || fileExtension === ".png" || fileExtension === ".jpg" || fileExtension === ".jpeg"){
                 previewPhoto = new Image();
 
                 document.querySelectorAll(".contentPreview").forEach(e => {
