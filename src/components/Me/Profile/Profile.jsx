@@ -30,6 +30,20 @@ export default function Profile(props){
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
     });
 
+    const handleEditProfile = e => {
+        let editProfileContainer = window.document.querySelector(".editProfileContainer");
+        editProfileContainer.style.display = "flex";
+        document.getElementById("root").setAttribute("class", "editProfileRoot");
+
+
+        const textarea = document.querySelector(".editBios");
+
+        textarea.addEventListener("input", function (e) {
+            this.style.height = "auto";
+            this.style.height = this.scrollHeight + "px";
+        })
+    }
+
     return(
         <div id="profile">
             <SearchHeader />
@@ -45,7 +59,36 @@ export default function Profile(props){
                     <span className="pProfile">@{profile}</span>
                 </div>
 
-                <button className="btnEditProfile">Edit Profile {props.user}</button>
+                <div className="editProfileContainer">
+                    <div className="editProfileHeader">
+                        <h2>Edit Profile</h2>
+                        <span onClick={() => {
+                            document.getElementById("root").removeAttribute("class", "editProfileRoot");
+                            document.querySelector(".editProfileContainer").style.display = "none";
+                        }}>X</span>
+                    </div>
+
+                    <img src={Avatar} alt="avatar" draggable="false" />
+
+                    <hr/>
+
+                    <p>User : {username}</p>
+                    <input type="text" />
+
+                    <p>Profile : @{profile}</p>
+                    <input type="text" />
+
+                    <textarea placeholder="Fale sobre você." className="editBios">
+
+                    </textarea>
+
+                    <div className="editButtonContainer">
+                        <button>Cancel</button>
+                        <button>Apply</button>
+                    </div>
+                </div>
+
+                <button className="btnEditProfile" onClick={handleEditProfile}>Edit Profile {props.user}</button>
             </div>
         </div>
     );

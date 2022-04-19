@@ -36,7 +36,7 @@
     background-color: red;
 }
 
-.removePreviewImg{
+.removePreviewImg, .removePreviewVideo{
     position: relative;
     left: -10px;
     color: red;
