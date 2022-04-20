@@ -120,8 +120,17 @@ export default function Profile(props){
         })
         .then(res => res.json())
         .then(res => {
-            setDbUsername(res.user);
-            setDbProfile(res.profile);
+            if(res.user === ""){
+                setDbUsername(dbUser);
+            }
+            if(res.profile === ""){
+                setDbProfile(dbProfile);
+            }
+
+            if(res.user !== "" && res.profile !== ""){
+                setDbProfile(res.profile);
+                setDbUsername(res.user);
+            }
         })
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
 
