@@ -122,13 +122,12 @@ export default function Profile(props){
         .then(res => {
             if(res.user === ""){
                 setDbUsername(dbUser);
+            }else{
+                setDbProfile(res.profile);
             }
             if(res.profile === ""){
                 setDbProfile(dbProfile);
-            }
-
-            if(res.user !== "" && res.profile !== ""){
-                setDbProfile(res.profile);
+            }else{
                 setDbUsername(res.user);
             }
         })
