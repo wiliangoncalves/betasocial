@@ -9,10 +9,19 @@ import Avatar from "../img/cooper.jpg";
 import DefaultAvatar from "../img/defaultAvatar.png";
 
 export default function Profile(props){
-    const [username, setUsername] = useState("");
-    const [profile, setProfile] = useState("");
-    const token = window.sessionStorage.getItem("access_token");
+    const [dbUser, setDbUsername] = useState("");
+    const [dbProfile, setDbProfile] = useState("");
 
+    const [newUser, setNewUser] = useState("");
+    const [newProfile, setNewProfile] = useState("");
+    const token = window.sessionStorage.getItem("access_token");
+    const [userMessage, setUserMessage] = useState("");
+    const [profileMessage, setProfileMessage] = useState("");
+
+    const userErrorMessage = document.querySelector(".userErrorMessage");
+    const profileErrorMessage = document.querySelector(".profileErrorMessage");
+
+    // Get database username and profile.
     useEffect(() => {
         fetch("https://tariqa.herokuapp.com/profile", {
             method: "POST",
@@ -24,17 +33,106 @@ export default function Profile(props){
         })
         .then(res => res.json())
         .then(res => {
-            setUsername(res.username);
-            setProfile(res.profile);
+            setDbUsername(res.username);
+            setDbProfile(res.profile);
         })
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
     });
 
+    // Handle new username.
+    const handleNewUser = e => {
+        let userInputName = e.target.value.trim();
+        setNewUser(userInputName);
+
+        fetch("https://tariqa.herokuapp.com/profile", {
+            method: "GET",
+            headers: {
+                "Content-Type": "Application/json"
+            },
+            mode: "cors"
+        })
+        .then(res => res.json())
+        .then(res => {
+            res.users.forEach(e => {
+                if(e.user === userInputName){
+                    setUserMessage("Nome de usuário já está sendo usado!");
+                    userErrorMessage.style.display = "block";
+
+                    setNewUser(dbUser);
+                    setNewProfile(dbProfile);
+
+                    return;
+                }else{
+                    userErrorMessage.style.display = "none";
+
+                    return;
+                }
+            })
+        })
+        .catch(err => console.log("Erro no catch do fetch GET do Profile", err));
+
+        e.preventDefault();
+    }
+
+    // Handle new profile.
+    const handleNewProfile = e => {
+        let userInputProfile = e.target.value.trim();
+        setNewProfile(userInputProfile);
+
+        fetch("https://tariqa.herokuapp.com/profile", {
+            method: "GET",
+            headers: {
+                "Content-Type": "Application/json"
+            },
+            mode: "cors"
+        })
+        .then(res => res.json())
+        .then(res => {
+            res.users.forEach(e => {
+                if(e.profile === userInputProfile){
+                    setProfileMessage("Nome de Perfil já está sendo usado!");
+                    profileErrorMessage.style.display = "block";
+
+                    setNewUser(dbUser);
+                    setNewProfile(dbProfile);
+
+                    return;
+                }else{
+                    profileErrorMessage.style.display = "none";
+                    return;
+                }
+            })
+        })
+        .catch(err => console.log("Erro no catch do fetch GET do Profile", err));
+
+        e.preventDefault();
+    }
+
+    // Handle apply changes.
+    const handleApplyProfile = e => {
+        fetch("https://tariqa.herokuapp.com/addprofile", {
+            method: "POST",
+            headers: {
+                "Content-Type": "Application/json"
+            },
+            mode: "cors",
+            body: JSON.stringify({token, newUser, newProfile})
+        })
+        .then(res => res.json())
+        .then(res => {
+            setDbUsername(res.user);
+            setDbProfile(res.profile);
+        })
+        .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
+
+        e.preventDefault();
+    };
+
+    // Handle profile apply.
     const handleEditProfile = e => {
         let editProfileContainer = window.document.querySelector(".editProfileContainer");
         editProfileContainer.style.display = "flex";
         document.getElementById("root").setAttribute("class", "editProfileRoot");
-
 
         const textarea = document.querySelector(".editBios");
 
@@ -55,8 +153,8 @@ export default function Profile(props){
                 </label>
 
                 <div className="profileUserName">
-                    <span className="pUsername">{username}</span>
-                    <span className="pProfile">@{profile}</span>
+                    <span className="pUsername">{dbUser}</span>
+                    <span className="pProfile">@{dbProfile}</span>
                 </div>
 
                 <div className="editProfileContainer">
@@ -72,11 +170,13 @@ export default function Profile(props){
 
                     <hr/>
 
-                    <p>User : {username}</p>
-                    <input type="text" />
+                    <p>User : {dbUser}</p>
+                    <input type="text" id="newUser" onChange={handleNewUser} autoComplete="off" />
+                    <p className="userErrorMessage" style={{display: "none"}}>{userMessage}</p>
 
-                    <p>Profile : @{profile}</p>
-                    <input type="text" />
+                    <p>Profile : @{dbProfile}</p>
+                    <input type="text" id="newProfile" onChange={handleNewProfile} autoComplete="off" />
+                    <p className="profileErrorMessage" style={{display: "none"}}>{profileMessage}</p>
 
                     <textarea placeholder="Fale sobre você." className="editBios">
 
@@ -84,7 +184,7 @@ export default function Profile(props){
 
                     <div className="editButtonContainer">
                         <button>Cancel</button>
-                        <button>Apply</button>
+                        <button onClick={handleApplyProfile} type="submit">Apply</button>
                     </div>
                 </div>
 

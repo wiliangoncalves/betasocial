@@ -5,6 +5,11 @@
     overflow: hidden;
 }
 
+.userErrorMessage, .profileErrorMessage{
+    color: red;
+    font-size: 10px;
+}
+
 .mainProfile{
     display: flex;
     flex-wrap: wrap;
@@ -84,7 +89,7 @@
     height: -moz-fit-content;
     height: fit-content;
     position: absolute;
-    top: 10%;
+    top: 5%;
     background-color: #fff;
     border-radius: 10px;
     padding: 0px 15px 20px 15px;
@@ -108,6 +113,7 @@
 .editProfileContainer input{
     width: 200px;
     text-align: center;
+    outline: 0;
 }
 
 .editProfileContainer textarea{
@@ -116,6 +122,7 @@
     margin-top: 35px;
     margin-bottom: -10px;
     resize: none;
+    outline: 0;
 }
 
 .editProfileContainer span{
