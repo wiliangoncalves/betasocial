@@ -34,7 +34,7 @@ export default function Nav(){
                     <span className="aboutSpan">About</span>
                 </a>
                 
-                <a href="/me"><BsFillPersonFill size={22} className="meIcon" />
+                <a href="/profile"><BsFillPersonFill size={22} className="meIcon" />
                     <span className="profileSpan">Profile</span>
                 </a>
 
