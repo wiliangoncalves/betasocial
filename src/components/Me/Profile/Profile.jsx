@@ -33,7 +33,7 @@ export default function Profile(props){
         })
         .then(res => res.json())
         .then(res => {
-            setDbUsername(res.username);
+            setDbUsername(res.user);
             setDbProfile(res.profile);
         })
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
