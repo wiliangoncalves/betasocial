@@ -121,13 +121,13 @@ export default function Profile(props){
         })
         .then(res => res.json())
         .then(res => {
-            if(res.user === ''){
+            if(dbUser === ''){
                 return;
             }else{
                 setDbUsername(res.user);
             }
 
-            if(res.profile === ''){
+            if(dbProfile === ''){
                 return;
             }else{
                 setDbProfile(res.profile);
