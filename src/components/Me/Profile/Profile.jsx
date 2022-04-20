@@ -15,6 +15,7 @@ export default function Profile(props){
     const [newUser, setNewUser] = useState("");
     const [newProfile, setNewProfile] = useState("");
     const token = window.sessionStorage.getItem("access_token");
+
     const [userMessage, setUserMessage] = useState("");
     const [profileMessage, setProfileMessage] = useState("");
 
@@ -120,16 +121,18 @@ export default function Profile(props){
         })
         .then(res => res.json())
         .then(res => {
-            if(res.user === ""){
-                setDbUsername(dbUser);
-            }else{
-                setDbProfile(res.profile);
-            }
-            if(res.profile === ""){
-                setDbProfile(dbProfile);
+            if(newProfile === ''){
+                return;
             }else{
                 setDbUsername(res.user);
             }
+
+            if(res.profile === ''){
+                return;
+            }else{
+                setDbProfile(res.profile);
+            }
+
         })
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
 
