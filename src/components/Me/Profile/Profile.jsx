@@ -121,7 +121,7 @@ export default function Profile(props){
         })
         .then(res => res.json())
         .then(res => {
-            if(newProfile === ''){
+            if(res.user === ''){
                 return;
             }else{
                 setDbUsername(res.user);
