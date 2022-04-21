@@ -8,6 +8,23 @@ import SearchHeader from "../SearchHeader/SearchHeader";
 import Avatar from "../img/cooper.jpg";
 import DefaultAvatar from "../img/defaultAvatar.png";
 
+let oi;
+
+
+fetch("https://tariqa.herokuapp.com/profile", {
+        method: "GET",
+        headers: {
+            "Content-Type": "Application/json"
+        },
+        mode: "cors"
+    })
+    .then(res => res.json())
+    .then(res => {
+        oi = res.users;
+        // setDbAllUsers(res.users);
+    })
+    .catch(err => console.log("Erro no catch do GET do profile.jsx", err));
+
 export default function Profile(props){
     const [dbUser, setDbUsername] = useState("");
     const [dbProfile, setDbProfile] = useState("");
@@ -45,25 +62,25 @@ export default function Profile(props){
     });
 
     // GET USERS FROM DATABASE.
-    useEffect(() => {
-        fetch("https://tariqa.herokuapp.com/profile", {
-            method: "GET",
-            headers: {
-                "Content-Type": "Application/json"
-            },
-            mode: "cors"
-        })
-        .then(res => res.json())
-        .then(res => {
-            setDbAllUsers(res.users);
-        })
-        .catch(err => console.log("Erro no catch do GET do profile.jsx", err));
-    })
+    // useEffect(() => {
+    //     fetch("https://tariqa.herokuapp.com/profile", {
+    //         method: "GET",
+    //         headers: {
+    //             "Content-Type": "Application/json"
+    //         },
+    //         mode: "cors"
+    //     })
+    //     .then(res => res.json())
+    //     .then(res => {
+    //         setDbAllUsers(res.users);
+    //     })
+    //     .catch(err => console.log("Erro no catch do GET do profile.jsx", err));
+    // })
 
     // Handle new username.
     const handleNewUser = element => {
 
-       if(dbAllUsers.find(e => {return element.target.value.trim() === e.user})){
+       if(oi.find(e => {return element.target.value.trim() === e.user})){
            console.log("Já existe no banco!");
 
            setUserMessage("Nome de usuário já está sendo usado!");
@@ -82,18 +99,18 @@ export default function Profile(props){
 
     // Handle new profile.
     const handleNewProfile = element => {
-        if(dbAllUsers.find(e => {return element.target.value.trim() === e.profile})){
+        if(oi.find(e => {return element.target.value.trim() === e.profile})){
             console.log("Já existe no banco!");
  
-            setUserMessage("Nome de usuário já está sendo usado!");
-            userErrorMessage.style.display = "block";
+            setProfileMessage("Nome de Perfil já está sendo usado!");
+            profileErrorMessage.style.display = "block";
  
             setNewProfile(dbProfile);
  
             return;
         }else{
             setNewProfile(element.target.value);
-            userErrorMessage.style.display = "none";
+            profileErrorMessage.style.display = "none";
  
             return;
         }
@@ -107,11 +124,10 @@ export default function Profile(props){
                 "Content-Type": "Application/json"
             },
             mode: "cors",
-            body: JSON.stringify({token, newUser, dbUser, dbProfile})
+            body: JSON.stringify({token, newUser, newProfile ,dbUser, dbProfile})
         })
         .then(res => res.json())
-        .then(res => {
-        })
+        .then(res => {})
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
 
         e.preventDefault();
