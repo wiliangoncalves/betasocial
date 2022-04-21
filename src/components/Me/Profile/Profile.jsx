@@ -12,7 +12,10 @@ export default function Profile(props){
     const [dbUser, setDbUsername] = useState("");
     const [dbProfile, setDbProfile] = useState("");
 
+    const [dbAllUsers, setDbAllUsers] = useState("");
+
     const [newUser, setNewUser] = useState("");
+
     const [newProfile, setNewProfile] = useState("");
     const token = window.sessionStorage.getItem("access_token");
 
@@ -22,9 +25,9 @@ export default function Profile(props){
     const userErrorMessage = document.querySelector(".userErrorMessage");
     const profileErrorMessage = document.querySelector(".profileErrorMessage");
 
-    // Get database username and profile.
+    // Get database username and profile of the CURRENT USER!.
     useEffect(() => {
-        fetch("https://tariqa.herokuapp.com/profile", {
+        fetch("http://192.168.0.109:3080/profile", {
             method: "POST",
             headers: {
                 "Content-Type": "Application/json"
@@ -34,18 +37,16 @@ export default function Profile(props){
         })
         .then(res => res.json())
         .then(res => {
+        
             setDbUsername(res.user);
             setDbProfile(res.profile);
         })
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
     });
 
-    // Handle new username.
-    const handleNewUser = e => {
-        let userInputName = e.target.value.trim();
-        setNewUser(userInputName);
-
-        fetch("https://tariqa.herokuapp.com/profile", {
+    // GET USERS FROM DATABASE.
+    useEffect(() => {
+        fetch("http://192.168.0.109:3080/profile", {
             method: "GET",
             headers: {
                 "Content-Type": "Application/json"
@@ -54,85 +55,62 @@ export default function Profile(props){
         })
         .then(res => res.json())
         .then(res => {
-            res.users.forEach(e => {
-                if(e.user === userInputName){
-                    setUserMessage("Nome de usuário já está sendo usado!");
-                    userErrorMessage.style.display = "block";
-
-                    setNewUser(dbUser);
-                    setNewProfile(dbProfile);
-
-                    return;
-                }else{
-                    userErrorMessage.style.display = "none";
-
-                    return;
-                }
-            })
+            setDbAllUsers(res.users);
         })
-        .catch(err => console.log("Erro no catch do fetch GET do Profile", err));
+        .catch(err => console.log("Erro no catch do GET do profile.jsx", err));
+    })
 
-        e.preventDefault();
+    // Handle new username.
+    const handleNewUser = element => {
+
+       if(dbAllUsers.find(e => {return element.target.value.trim() === e.user})){
+           console.log("Já existe no banco!");
+
+           setUserMessage("Nome de usuário já está sendo usado!");
+           userErrorMessage.style.display = "block";
+
+           setNewUser(dbUser);
+
+           return;
+       }else{
+           setNewUser(element.target.value);
+           userErrorMessage.style.display = "none";
+
+           return;
+       }
     }
 
     // Handle new profile.
-    const handleNewProfile = e => {
-        let userInputProfile = e.target.value.trim();
-        setNewProfile(userInputProfile);
-
-        fetch("https://tariqa.herokuapp.com/profile", {
-            method: "GET",
-            headers: {
-                "Content-Type": "Application/json"
-            },
-            mode: "cors"
-        })
-        .then(res => res.json())
-        .then(res => {
-            res.users.forEach(e => {
-                if(e.profile === userInputProfile){
-                    setProfileMessage("Nome de Perfil já está sendo usado!");
-                    profileErrorMessage.style.display = "block";
-
-                    setNewUser(dbUser);
-                    setNewProfile(dbProfile);
-
-                    return;
-                }else{
-                    profileErrorMessage.style.display = "none";
-                    return;
-                }
-            })
-        })
-        .catch(err => console.log("Erro no catch do fetch GET do Profile", err));
-
-        e.preventDefault();
+    const handleNewProfile = element => {
+        if(dbAllUsers.find(e => {return element.target.value.trim() === e.profile})){
+            console.log("Já existe no banco!");
+ 
+            setUserMessage("Nome de usuário já está sendo usado!");
+            userErrorMessage.style.display = "block";
+ 
+            setNewProfile(dbProfile);
+ 
+            return;
+        }else{
+            setNewProfile(element.target.value);
+            userErrorMessage.style.display = "none";
+ 
+            return;
+        }
     }
 
     // Handle apply changes.
     const handleApplyProfile = e => {
-        fetch("https://tariqa.herokuapp.com/addprofile", {
+        fetch("http://192.168.0.109:3080/addprofile", {
             method: "POST",
             headers: {
                 "Content-Type": "Application/json"
             },
             mode: "cors",
-            body: JSON.stringify({token, newUser, newProfile})
+            body: JSON.stringify({token, newUser, dbUser, dbProfile})
         })
         .then(res => res.json())
         .then(res => {
-            if(dbUser === ''){
-                return;
-            }else{
-                setDbUsername(res.user);
-            }
-
-            if(dbProfile === ''){
-                return;
-            }else{
-                setDbProfile(res.profile);
-            }
-
         })
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
 
