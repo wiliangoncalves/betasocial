@@ -27,7 +27,7 @@ export default function Profile(props){
 
     // Get database username and profile of the CURRENT USER!.
     useEffect(() => {
-        fetch("http://192.168.0.109:3080/profile", {
+        fetch("https://tariqa.herokuapp.com/profile", {
             method: "POST",
             headers: {
                 "Content-Type": "Application/json"
@@ -46,7 +46,7 @@ export default function Profile(props){
 
     // GET USERS FROM DATABASE.
     useEffect(() => {
-        fetch("http://192.168.0.109:3080/profile", {
+        fetch("https://tariqa.herokuapp.com/profile", {
             method: "GET",
             headers: {
                 "Content-Type": "Application/json"
@@ -101,7 +101,7 @@ export default function Profile(props){
 
     // Handle apply changes.
     const handleApplyProfile = e => {
-        fetch("http://192.168.0.109:3080/addprofile", {
+        fetch("https://tariqa.herokuapp.com/addprofile", {
             method: "POST",
             headers: {
                 "Content-Type": "Application/json"
