@@ -64,7 +64,7 @@ export default function Login(){
 
                 <form id="loginForm">
                     <div className="formFields">
-                        <input type="email" id="email" name="email" autoComplete="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} autoFocus />
+                        <input type="email" id="email" name="email" autoComplete="off" placeholder="Email" onChange={(e) => setEmail(e.target.value)} autoFocus />
                     
                         <input type="password" id="password" name="password" placeholder="Senha" onChange={(e) => setPassword(e.target.value)} autoComplete="off" />
                     </div>
