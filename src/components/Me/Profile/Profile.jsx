@@ -4,21 +4,13 @@ import "./Profile.css";
 
 // HeaderMe Icons
 import SearchHeader from "../SearchHeader/SearchHeader";
-import MyPost from "../MyPost/MyPost";
 
-import { Widget, Panel } from "@uploadcare/react-widget";
+import { Widget} from "@uploadcare/react-widget";
 
 import Avatar from "../avatar/Avatar";
 
-import DefaultAvatar from "../img/defaultAvatar.png";
-
-import {handleSaveAvatar} from "../avatar/Avatar";
-
-// import { handleUploadAvatar } from "../avatar/Avatar";
-
 
 let user;
-// export oi === "" ? oi =  "https://iili.io/VOomhv.jpg" : oi = <DefaultAvatar />;
 
 fetch("https://tariqa.herokuapp.com/profile", {
         method: "GET",
@@ -157,6 +149,8 @@ export default function Profile(props){
 
             <div className="mainProfile">
                 <Avatar />
+                {/* <img src="" alt="User avatar" id="avatar" draggable="false" /> */}
+                
 
                 <div className="profileUserName">
                     <span className="pUsername">{dbUser}</span>
@@ -177,7 +171,6 @@ export default function Profile(props){
                         {/* <img src={DefaultAvatar} alt="User avatar" id="avatar" /> */}
                         <input id="uploadAvatar" name="avatar" accept="image/png, image/jpg, image/jpeg" />
                         <Widget publicKey="af473fee2421b8b78b43"  onChange={handleUploadAvatar} />
-                        <button onClick={handleSaveAvatar}>Salvar imagem</button>
                     </label>
 
                     <hr/>

@@ -5,12 +5,10 @@ import { useNavigate } from "react-router-dom";
 import "./Me.css";
 
 import DefaultAvatar from "./img/defaultAvatar.png";
-import Avatar from "./img/cooper.jpg";
 
 import SearchHeader from "./SearchHeader/SearchHeader";
 import UserPost from "../Main/UserPost/UserPost";
 import Nav from "../Nav/Nav";
-import Profile from "./Profile/Profile";
 
 // postMe Icons
 import { BsCardImage } from "react-icons/bs";
