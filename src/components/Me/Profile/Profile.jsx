@@ -5,11 +5,12 @@ import "./Profile.css";
 // HeaderMe Icons
 import SearchHeader from "../SearchHeader/SearchHeader";
 
-import Avatar from "../img/cooper.jpg";
-import DefaultAvatar from "../img/defaultAvatar.png";
 
-let oi;
+import Avatar from "../avatar/Avatar";
 
+import { handleUploadAvatar } from "../avatar/Avatar";
+
+let user;
 
 fetch("https://tariqa.herokuapp.com/profile", {
         method: "GET",
@@ -20,7 +21,7 @@ fetch("https://tariqa.herokuapp.com/profile", {
     })
     .then(res => res.json())
     .then(res => {
-        oi = res.users;
+        user = res.users;
         // setDbAllUsers(res.users);
     })
     .catch(err => console.log("Erro no catch do GET do profile.jsx", err));
@@ -28,8 +29,6 @@ fetch("https://tariqa.herokuapp.com/profile", {
 export default function Profile(props){
     const [dbUser, setDbUsername] = useState("");
     const [dbProfile, setDbProfile] = useState("");
-
-    const [dbAllUsers, setDbAllUsers] = useState("");
 
     const [newUser, setNewUser] = useState("");
 
@@ -61,26 +60,10 @@ export default function Profile(props){
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
     });
 
-    // GET USERS FROM DATABASE.
-    // useEffect(() => {
-    //     fetch("https://tariqa.herokuapp.com/profile", {
-    //         method: "GET",
-    //         headers: {
-    //             "Content-Type": "Application/json"
-    //         },
-    //         mode: "cors"
-    //     })
-    //     .then(res => res.json())
-    //     .then(res => {
-    //         setDbAllUsers(res.users);
-    //     })
-    //     .catch(err => console.log("Erro no catch do GET do profile.jsx", err));
-    // })
-
     // Handle new username.
     const handleNewUser = element => {
 
-       if(oi.find(e => {return element.target.value.trim() === e.user})){
+       if(user.find(e => {return element.target.value.trim() === e.user})){
            console.log("Já existe no banco!");
 
            setUserMessage("Nome de usuário já está sendo usado!");
@@ -99,7 +82,7 @@ export default function Profile(props){
 
     // Handle new profile.
     const handleNewProfile = element => {
-        if(oi.find(e => {return element.target.value.trim() === e.profile})){
+        if(user.find(e => {return element.target.value.trim() === e.profile})){
             console.log("Já existe no banco!");
  
             setProfileMessage("Nome de Perfil já está sendo usado!");
@@ -115,23 +98,7 @@ export default function Profile(props){
             return;
         }
     }
-
-    // Handle apply changes.
-    const handleApplyProfile = e => {
-        fetch("https://tariqa.herokuapp.com/addprofile", {
-            method: "POST",
-            headers: {
-                "Content-Type": "Application/json"
-            },
-            mode: "cors",
-            body: JSON.stringify({token, newUser, newProfile ,dbUser, dbProfile})
-        })
-        .then(res => res.json())
-        .then(res => {})
-        .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
-
-        e.preventDefault();
-    };
+    
 
     // Handle profile apply.
     const handleEditProfile = e => {
@@ -147,15 +114,51 @@ export default function Profile(props){
         })
     }
 
+    // Handle apply changes.
+    const handleApplyProfile = e => {
+        fetch("https://tariqa.herokuapp.com/addprofile", {
+            method: "POST",
+            headers: {
+                "Content-Type": "Application/json"
+            },
+            mode: "cors",
+            body: JSON.stringify({token, newUser, newProfile ,dbUser, dbProfile})
+        })
+        .then(res => res.json())
+        .then(res => {
+            const client = filestack.init(YOUR_API_KEY);
+            client.picker().open();
+
+            const dwolla = window.fileStack;
+
+            let uploadedAvatar = document.getElementById("img").src;
+            // let type = document.getElementById("img").getAttribute('custom-type');
+            let randomName = Math.floor(Math.random() * 99999999);
+            
+            let fileName;
+            let UploadFieldID = "uploadAvatar";
+            fileName = document.getElementById(UploadFieldID);
+            const [file] = fileName.files;
+            
+            let bb = new Blob([file ], { type: 'image/bmp' });
+            let a = document.createElement('a');
+            a.download = `${randomName}.jpg`;
+            a.href = window.URL.createObjectURL(bb);
+            a.click();
+        })
+        .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
+
+        e.preventDefault();
+    };
+
     return(
         <div id="profile">
             <SearchHeader />
 
             <div className="mainProfile">
-                <label htmlFor="uploadAvatar">
-                    <img src={DefaultAvatar} alt="User avatar" />
-                    <input type="file" id="uploadAvatar" />
-                </label>
+                <Avatar />
+                {/* <img src={DefaultAvatar} alt="User avatar" id="avatar" draggable="false" /> */}
+                
 
                 <div className="profileUserName">
                     <span className="pUsername">{dbUser}</span>
@@ -171,7 +174,11 @@ export default function Profile(props){
                         }}>X</span>
                     </div>
 
-                    <img src={Avatar} alt="avatar" draggable="false" />
+                    <label htmlFor="uploadAvatar">
+                        <Avatar />
+                        {/* <img src={DefaultAvatar} alt="User avatar" id="avatar" /> */}
+                        <input type="file" id="uploadAvatar" onChange={handleUploadAvatar} name="avatar" accept="image/png, image/jpg, image/jpeg" />
+                    </label>
 
                     <hr/>
 

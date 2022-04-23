@@ -54,7 +54,7 @@ export default function Me(){
 
             <div className="postMe" id="postMe" onClick={handlePost}>
                 <div className="postMeTop">
-                    <a href="/me"> <img src={DefaultAvatar} alt="meAvatar" className="meAvatar" /> </a>
+                    <a href="#"> <img src={DefaultAvatar} id="avatar" alt="meAvatar" className="meAvatar" /> </a>
                     <select>
                         <option value="0">selecionar postagem</option>
                         <option value="1">postar na timeline</option>

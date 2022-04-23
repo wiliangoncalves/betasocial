@@ -2,8 +2,10 @@ import React from "react";
 
 import "./MyPost.css";
 
-import DefaultAvatar from "../img/defaultAvatar.png";
-import Avatar from "../img/cooper.jpg";
+// import DefaultAvatar from "../img/defaultAvatar.png";
+// import Avatar from "../img/cooper.jpg";
+
+import Avatar from "../avatar/Avatar";
 
 import { MdArrowBackIosNew } from "react-icons/md";
 
@@ -23,7 +25,16 @@ import HandleEmoji from "./Emoji/HandleEmoji";
 export default function MyPost(){
     // let local = window.location.href;
     // if(local.includes("/mypost")){
-    //     document.getElementById("postMe").style.margin = "20px 25.5% 30px auto;";
+    //     let p = window.innerWidth;
+
+    //     if(p >= 769 && p <= 1024){
+    //         document.getElementById("postMe").style.margin = "30px 25.5% 30px auto";
+    //         // document.getElementById("postMe").style.width = "80%";
+    //     }
+
+    //     console.log(p);
+    //     // document.getElementById("postMe").style.margin = "80px 25.5% 30px auto";
+    //     // document.getElementById("postMe").style.width = "50%";
     // }
 
     return(
@@ -40,7 +51,8 @@ export default function MyPost(){
 
             <div className="postMe myPost" id="postMe">
                 <div className="postMeTop">
-                    <img src={Avatar || DefaultAvatar} alt="meAvatar" className="meAvatar" draggable="false" />
+                    <Avatar />
+                    {/* <img src={Avatar || DefaultAvatar} alt="meAvatar" className="meAvatar" draggable="false" /> */}
                     <select>
                         <option value="0">selecionar postagem</option>
                         <option value="1">postar na timeline</option>
