@@ -24,7 +24,6 @@ export default function Me(){
     let navigate = useNavigate();;
 
     const token = window.sessionStorage.getItem("access_token");
-    // const handleCostumer = document.querySelector(".costumerIcon");
 
     useEffect(() => {
         fetch("https://tariqa.herokuapp.com/me", {
@@ -54,7 +53,7 @@ export default function Me(){
 
             <div className="postMe" id="postMe" onClick={handlePost}>
                 <div className="postMeTop">
-                    <a href="#"> <img src={DefaultAvatar} id="avatar" alt="meAvatar" className="meAvatar" /> </a>
+                    <a href="#"> <img src={DefaultAvatar} id="avatar" alt="meAvatar" className="meAvatar" /></a>
                     <select>
                         <option value="0">selecionar postagem</option>
                         <option value="1">postar na timeline</option>

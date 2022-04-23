@@ -4,13 +4,21 @@ import "./Profile.css";
 
 // HeaderMe Icons
 import SearchHeader from "../SearchHeader/SearchHeader";
+import MyPost from "../MyPost/MyPost";
 
+import { Widget, Panel } from "@uploadcare/react-widget";
 
 import Avatar from "../avatar/Avatar";
 
-import { handleUploadAvatar } from "../avatar/Avatar";
+import DefaultAvatar from "../img/defaultAvatar.png";
+
+import {handleSaveAvatar} from "../avatar/Avatar";
+
+// import { handleUploadAvatar } from "../avatar/Avatar";
+
 
 let user;
+// export oi === "" ? oi =  "https://iili.io/VOomhv.jpg" : oi = <DefaultAvatar />;
 
 fetch("https://tariqa.herokuapp.com/profile", {
         method: "GET",
@@ -31,7 +39,7 @@ export default function Profile(props){
     const [dbProfile, setDbProfile] = useState("");
 
     const [newUser, setNewUser] = useState("");
-
+    const [newAvatar, setNewAvatar] = useState("");
     const [newProfile, setNewProfile] = useState("");
     const token = window.sessionStorage.getItem("access_token");
 
@@ -53,7 +61,6 @@ export default function Profile(props){
         })
         .then(res => res.json())
         .then(res => {
-        
             setDbUsername(res.user);
             setDbProfile(res.profile);
         })
@@ -99,6 +106,16 @@ export default function Profile(props){
         }
     }
     
+    //Handle avatar change
+
+    const handleUploadAvatar = element => {
+        document.querySelectorAll("#img").forEach(e => {
+            e.src = element.originalUrl;
+        });
+        setNewAvatar(element.originalUrl);
+    }
+
+    
 
     // Handle profile apply.
     const handleEditProfile = e => {
@@ -114,6 +131,7 @@ export default function Profile(props){
         })
     }
 
+
     // Handle apply changes.
     const handleApplyProfile = e => {
         fetch("https://tariqa.herokuapp.com/addprofile", {
@@ -122,29 +140,11 @@ export default function Profile(props){
                 "Content-Type": "Application/json"
             },
             mode: "cors",
-            body: JSON.stringify({token, newUser, newProfile ,dbUser, dbProfile})
+            body: JSON.stringify({token, newUser, newProfile ,dbUser, dbProfile, newAvatar})
         })
         .then(res => res.json())
         .then(res => {
-            const client = filestack.init(YOUR_API_KEY);
-            client.picker().open();
-
-            const dwolla = window.fileStack;
-
-            let uploadedAvatar = document.getElementById("img").src;
-            // let type = document.getElementById("img").getAttribute('custom-type');
-            let randomName = Math.floor(Math.random() * 99999999);
-            
-            let fileName;
-            let UploadFieldID = "uploadAvatar";
-            fileName = document.getElementById(UploadFieldID);
-            const [file] = fileName.files;
-            
-            let bb = new Blob([file ], { type: 'image/bmp' });
-            let a = document.createElement('a');
-            a.download = `${randomName}.jpg`;
-            a.href = window.URL.createObjectURL(bb);
-            a.click();
+            setNewAvatar(res.avatar);
         })
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
 
@@ -157,8 +157,6 @@ export default function Profile(props){
 
             <div className="mainProfile">
                 <Avatar />
-                {/* <img src={DefaultAvatar} alt="User avatar" id="avatar" draggable="false" /> */}
-                
 
                 <div className="profileUserName">
                     <span className="pUsername">{dbUser}</span>
@@ -177,7 +175,9 @@ export default function Profile(props){
                     <label htmlFor="uploadAvatar">
                         <Avatar />
                         {/* <img src={DefaultAvatar} alt="User avatar" id="avatar" /> */}
-                        <input type="file" id="uploadAvatar" onChange={handleUploadAvatar} name="avatar" accept="image/png, image/jpg, image/jpeg" />
+                        <input id="uploadAvatar" name="avatar" accept="image/png, image/jpg, image/jpeg" />
+                        <Widget publicKey="af473fee2421b8b78b43"  onChange={handleUploadAvatar} />
+                        <button onClick={handleSaveAvatar}>Salvar imagem</button>
                     </label>
 
                     <hr/>
