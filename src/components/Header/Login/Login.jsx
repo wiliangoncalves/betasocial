@@ -41,6 +41,21 @@ export default function Login(){
 
             if(res.auth){
                 window.sessionStorage.setItem("access_token", token);
+
+                window.onload = fetch("https://tariqa.herokuapp.com/profile", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "Application/json"
+                    },
+                    mode: "cors",
+                    body: JSON.stringify({token})
+                    })
+                    .then(res => res.json())
+                    .then(res => {
+                        document.querySelector(".meAvatarHeader > img").src = res.avatar;
+                    })
+                    .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
+
                 return pass("/me");
             }
         })
@@ -64,7 +79,7 @@ export default function Login(){
 
                 <form id="loginForm">
                     <div className="formFields">
-                        <input type="email" id="email" name="email" autoComplete="off" placeholder="Email" onChange={(e) => setEmail(e.target.value)} autoFocus />
+                        <input type="email" id="email" name="email" autoComplete="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} autoFocus />
                     
                         <input type="password" id="password" name="password" placeholder="Senha" onChange={(e) => setPassword(e.target.value)} autoComplete="off" />
                     </div>

@@ -156,8 +156,6 @@ export default function Profile(props){
 
             <div className="mainProfile">
                 <Avatar />
-                {/* <img src="" alt="User avatar" id="avatar" draggable="false" /> */}
-                
 
                 <div className="profileUserName">
                     <span className="pUsername">{dbUser}</span>

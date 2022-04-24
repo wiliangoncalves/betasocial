@@ -20,7 +20,7 @@ export default function Avatar(){
     .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
 
     return(
-        <div>
+        <div className="pegar">
             <img id="img" src={avatar} draggable="false" alt="avatar"/>
         </div>
     );
