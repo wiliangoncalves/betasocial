@@ -175,7 +175,7 @@ export default function Profile(props){
                         <Avatar />
                         {/* <img src={DefaultAvatar} alt="User avatar" id="avatar" /> */}
                         <input id="uploadAvatar" name="avatar" accept="image/png, image/jpg, image/jpeg" />
-                        <Widget publicKey="af473fee2421b8b78b43"  onChange={handleUploadAvatar} />
+                        <Widget imagesOnly publicKey="af473fee2421b8b78b43"  onChange={handleUploadAvatar} />
                     </label>
 
                     <hr/>
