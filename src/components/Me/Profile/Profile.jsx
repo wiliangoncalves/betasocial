@@ -29,6 +29,7 @@ fetch("https://tariqa.herokuapp.com/profile", {
 export default function Profile(props){
     const [dbUser, setDbUsername] = useState("");
     const [dbProfile, setDbProfile] = useState("");
+    const [dbAvatar, setDbAvatar] = useState("");
 
     const [newUser, setNewUser] = useState("");
     const [newAvatar, setNewAvatar] = useState("");
@@ -53,8 +54,10 @@ export default function Profile(props){
         })
         .then(res => res.json())
         .then(res => {
+
             setDbUsername(res.user);
             setDbProfile(res.profile);
+            setDbAvatar(res.avatar);
         })
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
     });
@@ -132,10 +135,14 @@ export default function Profile(props){
                 "Content-Type": "Application/json"
             },
             mode: "cors",
-            body: JSON.stringify({token, newUser, newProfile ,dbUser, dbProfile, newAvatar})
+            body: JSON.stringify({token, newUser, newProfile ,dbUser, dbProfile, newAvatar, dbAvatar})
         })
         .then(res => res.json())
         .then(res => {
+
+            if(newAvatar.length <= 0){
+                setNewAvatar(dbAvatar);
+            }
             setNewAvatar(res.avatar);
         })
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
