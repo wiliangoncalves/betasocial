@@ -37,7 +37,7 @@ export default function SearchHeader(){
                 <a href="/search"><AiOutlineSearch size={30} color="#2d3436" className="headerMeSearchIcon" /></a>
                 <a href="/chat"><AiFillMessage size={30} color="#2d3436" className="headerMeChatIcon" /></a>
 
-                <a href="/profile" className="meAvatarHeader"> <img src="" id="avatar" alt="Avatar" /> </a>
+                <a href="/profile" className="meAvatarHeader"> <img style={{width: "64px", height: "60px"}} src="" id="avatar" alt="Avatar" /> </a>
             </div>
         </div>
     );
