@@ -19,7 +19,7 @@ import { MdVisibility } from "react-icons/md";
 import { MdVisibilityOff } from "react-icons/md";
 
 export default function Me(){
-    let navigate = useNavigate();;
+    let navigate = useNavigate();
 
     const token = window.sessionStorage.getItem("access_token");
 
@@ -34,8 +34,7 @@ export default function Me(){
         })
         .then(res => res.json())
         .then(res => {
-            if(res.auth === true){
-                
+            if(res.auth === true){   
             }
         })
         .catch(err => {if(err){console.log("Erro no catch do Me.jsx", err);}});
@@ -44,6 +43,8 @@ export default function Me(){
     const handlePost = e => {
         navigate("/mypost");
     }
+
+    // document.getElementById("avatar").src = window.localStorage.getItem('avatar');
 
     return(
         <div id="me" >

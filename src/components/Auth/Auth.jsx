@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import "./Auth.css";
 
-import Me from "../Me/Me";
-
 export default function Auth({children, props}) {
     const token = window.sessionStorage.getItem("access_token");
     

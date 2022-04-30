@@ -5,10 +5,9 @@ import "./Profile.css";
 // HeaderMe Icons
 import SearchHeader from "../SearchHeader/SearchHeader";
 
-import { Widget} from "@uploadcare/react-widget";
+import {Widget} from "@uploadcare/react-widget";
 
 import Avatar from "../avatar/Avatar";
-
 
 let user;
 
@@ -22,7 +21,6 @@ fetch("https://tariqa.herokuapp.com/profile", {
     .then(res => res.json())
     .then(res => {
         user = res.users;
-        // setDbAllUsers(res.users);
     })
     .catch(err => console.log("Erro no catch do GET do profile.jsx", err));
 
@@ -40,7 +38,7 @@ export default function Profile(props){
     const [profileMessage, setProfileMessage] = useState("");
 
     const userErrorMessage = document.querySelector(".userErrorMessage");
-    const profileErrorMessage = document.querySelector(".profileErrorMessage");
+    const profileErrorMessage = document.querySelector(".profileErrorMessage");  
 
     // Get database username and profile of the CURRENT USER!.
     useEffect(() => {
@@ -102,15 +100,12 @@ export default function Profile(props){
     }
     
     //Handle avatar change
-
     const handleUploadAvatar = element => {
         document.querySelectorAll("#img").forEach(e => {
             e.src = element.originalUrl;
         });
         setNewAvatar(element.originalUrl);
     }
-
-    
 
     // Handle profile apply.
     const handleEditProfile = e => {
@@ -125,7 +120,6 @@ export default function Profile(props){
             this.style.height = this.scrollHeight + "px";
         })
     }
-
 
     // Handle apply changes.
     const handleApplyProfile = e => {
@@ -142,8 +136,10 @@ export default function Profile(props){
 
             if(newAvatar.length <= 0){
                 setNewAvatar(dbAvatar);
+                
             }
             setNewAvatar(res.avatar);
+            document.location.reload();
         })
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
 
@@ -175,10 +171,8 @@ export default function Profile(props){
                         <Avatar />
                         {/* <img src={DefaultAvatar} alt="User avatar" id="avatar" /> */}
                         <input id="uploadAvatar" name="avatar" accept="image/png, image/jpg, image/jpeg" />
-                        <Widget imagesOnly publicKey="af473fee2421b8b78b43"  onChange={handleUploadAvatar} />
+                        <Widget tabs="file facebook instagram gphotos camera gdrive" locale="pt" imagesOnly publicKey="af473fee2421b8b78b43"  onChange={handleUploadAvatar} />
                     </label>
-
-                    <hr/>
 
                     <p>User : {dbUser}</p>
                     <input type="text" id="newUser" onChange={handleNewUser} autoComplete="off" />
@@ -193,7 +187,7 @@ export default function Profile(props){
                     </textarea>
 
                     <div className="editButtonContainer">
-                        <button>Cancel</button>
+                        <button onClick={() => document.location.reload()}>Cancel</button>
                         <button onClick={handleApplyProfile} type="submit">Apply</button>
                     </div>
                 </div>

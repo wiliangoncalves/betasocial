@@ -160,6 +160,14 @@
     width: 150px;
 }
 
+.editButtonContainer a{
+    text-decoration: none;
+    color: rgb(211, 4, 21);
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #5495e9;
+}
 .editButtonContainer button:first-child{
     color: rgb(211, 4, 21);
     border: 1px solid rgb(211, 4, 21);
@@ -171,7 +179,7 @@
     color: white;
     background-color: #5495e9;
 }
-.editButtonContainer button:first-child:hover{
+.editButtonContainer button:first-child:hover, .editButtonContainer a:hover{
     cursor: pointer;
     color: white;
     background-color: rgb(207, 9, 26);
