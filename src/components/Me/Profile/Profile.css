@@ -1,7 +1,6 @@
 #profile{
     margin-top: 90px;
     width: 100%;
-    /* margin: auto; */
     overflow: hidden;
 }
 
@@ -15,13 +14,12 @@
     flex-wrap: wrap;
     width: 100%;
     margin: 0px auto 0px auto;
-    /* padding: 0px 15px 0px 200px; */
     background-color: #fff;
 }
 
 .joinedDate{
     position: absolute;
-    top: 185px;
+    top: 200px;
     display: flex;
     align-items: center;
     font-size: 14px;
@@ -30,8 +28,8 @@
 }
 
 .mainProfile img{
-    height: 100px;
-    width: 100px;
+    height: 115px;
+    width: 115px;
     margin-bottom: 40px;
 }
 
@@ -63,6 +61,7 @@
     color: rgb(4, 128, 211);;
     outline: 0;
     width: 150px;
+    margin-right: 180px;
 }
 .btnEditProfile:hover{
     cursor: pointer;

@@ -103,7 +103,7 @@ export default function Profile(props){
     
     //Handle avatar change
     const handleUploadAvatar = element => {
-        document.querySelectorAll("#img").forEach(e => {
+        document.querySelectorAll("#avatar").forEach(e => {
             e.src = element.originalUrl;
         });
         setNewAvatar(element.originalUrl);
@@ -154,7 +154,7 @@ export default function Profile(props){
 
             <div className="mainProfile">
                 <Avatar />
-                <p className="joinedDate"><MdDateRange size={20} />joined date<br/>2022/05/02</p>
+                {/* <p className="joinedDate"><MdDateRange size={20} />joined date<br/>2022/05/02</p> */}
 
                 <div className="profileUserName">
                     <span className="pUsername">{dbUser}</span>
@@ -173,8 +173,10 @@ export default function Profile(props){
                     <label htmlFor="uploadAvatar">
                         <Avatar />
                         {/* <img src={DefaultAvatar} alt="User avatar" id="avatar" /> */}
-                        <input id="uploadAvatar" name="avatar" accept="image/png, image/jpg, image/jpeg" />
-                        <Widget tabs="file facebook instagram gphotos camera gdrive" locale="pt" imagesOnly publicKey="af473fee2421b8b78b43"  onChange={handleUploadAvatar} />
+                        {/* <input id="uploadAvatar" name="avatar" accept="image/png, image/jpg, image/jpeg" /> */}
+                        <div style={{marginTop: "-30px"}}>
+                            <Widget tabs="file facebook instagram gphotos camera gdrive" locale="pt" imagesOnly publicKey="af473fee2421b8b78b43"  onChange={handleUploadAvatar} />
+                        </div>
                     </label>
 
                     <p>User : {dbUser}</p>
@@ -194,6 +196,8 @@ export default function Profile(props){
                         <button onClick={handleApplyProfile} type="submit">Apply</button>
                     </div>
                 </div>
+
+                <p className="joinedDate"><MdDateRange size={20} />joined date<br/>2022/05/02</p>
 
                 <button className="btnEditProfile" onClick={handleEditProfile}>Edit Profile {props.user}</button>
             </div>

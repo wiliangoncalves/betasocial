@@ -4,7 +4,6 @@ const token = sessionStorage.getItem("access_token");
 
 export default function Avatar(){
     const [avatar, setAvatar] = useState("");
-    const [localAvatar, setLocalAvatar] = useState("");
 
     fetch("https://tariqa.herokuapp.com/profile", {
     method: "POST",
@@ -22,7 +21,7 @@ export default function Avatar(){
 
     return(
         <div className="avatarComponent">
-            <img id="avatar" src={avatar} draggable="false" alt="avatar"/>
+            <img id="avatar" src={avatar} draggable="false" alt="avatar" style={{marginTop: "2px"}} />
         </div>
     );
 };
