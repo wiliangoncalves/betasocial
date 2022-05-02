@@ -5,6 +5,8 @@ import "./Login.css";
 
 import HandleError from "../../HandleMessage/HandleError";
 
+import SearchHeader from "../../Me/SearchHeader/SearchHeader";
+
 import Profile from "../../Me/Profile/Profile";
 
 export default function Login(){
@@ -15,7 +17,7 @@ export default function Login(){
     const pass = useNavigate();
     
     const handleLogin = (e) => {
-        fetch("https://tariqa.herokuapp.com/login", {
+        fetch("http://192.168.0.109:3080/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -42,7 +44,7 @@ export default function Login(){
             if(res.auth){
                 window.sessionStorage.setItem("access_token", token);
 
-                window.onload = fetch("https://tariqa.herokuapp.com/profile", {
+                window.onload = fetch("http://192.168.0.109:3080/profile", {
                     method: "POST",
                     headers: {
                         "Content-Type": "Application/json"
@@ -52,9 +54,9 @@ export default function Login(){
                     })
                     .then(res => res.json())
                     .then(res => {
-                        document.querySelector(".meAvatarHeader > img").src = res.avatar;
+                        // document.querySelector("#avatar").src = res.avatar;
                     })
-                    .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
+                    .catch(err => {console.log("Erro no catch do Login.jsx", err)});
 
                 return pass("/me");
             }

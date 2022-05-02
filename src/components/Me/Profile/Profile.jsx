@@ -11,9 +11,11 @@ import {Widget} from "@uploadcare/react-widget";
 
 import Avatar from "../avatar/Avatar";
 
+import UserPost from "../../Main/UserPost/UserPost";
+
 let user;
 
-fetch("https://tariqa.herokuapp.com/profile", {
+fetch("http://192.168.0.109:3080/profile", {
         method: "GET",
         headers: {
             "Content-Type": "Application/json"
@@ -30,10 +32,22 @@ export default function Profile(props){
     const [dbUser, setDbUsername] = useState("");
     const [dbProfile, setDbProfile] = useState("");
     const [dbAvatar, setDbAvatar] = useState("");
+    const [dbProfileAbout, setDbProfileAbout] = useState("");
+    const [dbFollowers, setDbFollowers] = useState(0);
+    const [dbFollowing, setDbFollowing] = useState(0);
+    const [dbBetas, setDbBetas] = useState(0);
+    const [dbMemberDateYear, setDbMemberDateYear] = useState("");
+    const [dbMemberDateMonth, setDbMemberMonth] = useState("");
+    const [dbMemberDateDay, setDbMemberDay] = useState("");
+
+    const [followers, setFollowers] = useState(0);
+    const [following, setFollowing] = useState(0);
+    const [betas, setBetas] = useState(0);
 
     const [newUser, setNewUser] = useState("");
     const [newAvatar, setNewAvatar] = useState("");
     const [newProfile, setNewProfile] = useState("");
+    const [newProfileAbout, setNewProfileAbout] = useState("");
     const token = window.sessionStorage.getItem("access_token");
 
     const [userMessage, setUserMessage] = useState("");
@@ -44,7 +58,7 @@ export default function Profile(props){
 
     // Get database username and profile of the CURRENT USER!.
     useEffect(() => {
-        fetch("https://tariqa.herokuapp.com/profile", {
+        fetch("http://192.168.0.109:3080/profile", {
             method: "POST",
             headers: {
                 "Content-Type": "Application/json"
@@ -54,10 +68,16 @@ export default function Profile(props){
         })
         .then(res => res.json())
         .then(res => {
-
             setDbUsername(res.user);
             setDbProfile(res.profile);
             setDbAvatar(res.avatar);
+            setDbProfileAbout(res.about);
+            setDbFollowers(res.followers);
+            setDbFollowing(res.following);
+            setDbBetas(res.betas);
+            setDbMemberDateYear(res.year);
+            setDbMemberMonth(res.month);
+            setDbMemberDay(res.day);
         })
         .catch(err => {console.log("Erro no catch do Profile.jsx", err)});
     });
@@ -123,15 +143,22 @@ export default function Profile(props){
         })
     }
 
+    // Handle About.
+    const handleAbout = event => {
+        const aboutInput = event.target.value.trim();
+
+        setNewProfileAbout(aboutInput);
+    }
+
     // Handle apply changes.
     const handleApplyProfile = e => {
-        fetch("https://tariqa.herokuapp.com/addprofile", {
+        fetch("http://192.168.0.109:3080/addprofile", {
             method: "POST",
             headers: {
                 "Content-Type": "Application/json"
             },
             mode: "cors",
-            body: JSON.stringify({token, newUser, newProfile ,dbUser, dbProfile, newAvatar, dbAvatar})
+            body: JSON.stringify({token, newUser, newProfile ,dbUser, dbProfile, newAvatar, dbAvatar, newProfileAbout, dbProfileAbout})
         })
         .then(res => res.json())
         .then(res => {
@@ -152,10 +179,8 @@ export default function Profile(props){
         <div id="profile">
             <SearchHeader />
 
-            <div className="mainProfile">
+            <div className="mainProfile">    
                 <Avatar />
-                {/* <p className="joinedDate"><MdDateRange size={20} />joined date<br/>2022/05/02</p> */}
-
                 <div className="profileUserName">
                     <span className="pUsername">{dbUser}</span>
                     <span className="pProfile">@{dbProfile}</span>
@@ -172,8 +197,6 @@ export default function Profile(props){
 
                     <label htmlFor="uploadAvatar">
                         <Avatar />
-                        {/* <img src={DefaultAvatar} alt="User avatar" id="avatar" /> */}
-                        {/* <input id="uploadAvatar" name="avatar" accept="image/png, image/jpg, image/jpeg" /> */}
                         <div style={{marginTop: "-30px"}}>
                             <Widget tabs="file facebook instagram gphotos camera gdrive" locale="pt" imagesOnly publicKey="af473fee2421b8b78b43"  onChange={handleUploadAvatar} />
                         </div>
@@ -187,7 +210,8 @@ export default function Profile(props){
                     <input type="text" id="newProfile" onChange={handleNewProfile} autoComplete="off" />
                     <p className="profileErrorMessage" style={{display: "none"}}>{profileMessage}</p>
 
-                    <textarea placeholder="Fale sobre você." className="editBios">
+                    <p style={{marginBottom: "-15px"}}>About:</p>
+                    <textarea placeholder="Fale sobre você." id="profileAbout" className="editBios" onChange={handleAbout}>
 
                     </textarea>
 
@@ -197,10 +221,38 @@ export default function Profile(props){
                     </div>
                 </div>
 
-                <p className="joinedDate"><MdDateRange size={20} />joined date<br/>2022/05/02</p>
+                {/* <p className="joinedDate"><MdDateRange size={20} />joined date<br/>2022/05/02</p> */}
 
                 <button className="btnEditProfile" onClick={handleEditProfile}>Edit Profile {props.user}</button>
+
+                <div className="profileInfo">
+                    <div>{dbBetas} <p>Betas</p></div>
+                    <div>{dbFollowers} <p>Followers</p></div>
+                    <div>{dbFollowing} <p>Following</p></div>
+                </div>
+
             </div>
+
+            <div className="profileAbout">
+                <span>About:</span>
+                <p>{dbProfileAbout}</p>
+                <p className="joinedDate"><MdDateRange size={20} />Member Since<br/>{dbMemberDateYear}/{dbMemberDateMonth}/{dbMemberDateDay}</p>
+            </div>
+
+            {/* <div className="profileFollowing">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta unde neque dolorem numquam quos mollitia ipsa nostrum perferendis, hic ratione aperiam, delectus eum dolorum tenetur magnam veniam perspiciatis? Molestiae, id!</p>
+            </div> */}
+
+            {/* <div className="profileInfo">
+                <div>{followers} <p>Betas</p></div>
+                <div>{followers} <p>Followers</p></div>
+                <div>{following} <p>Following</p></div>
+            </div>
+
+            <div className="profileAbout">
+                <span>About</span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam voluptatum eius molestiae asperiores nostrum cupiditate et nulla numquam! Amet quia quo minima provident in possimus eum nam error cupiditate autem.</p>
+            </div> */}
         </div>
     );
 }
