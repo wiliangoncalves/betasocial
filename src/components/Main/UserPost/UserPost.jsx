@@ -16,7 +16,9 @@ import {BiShare} from "react-icons/bi";
 import "./UserPost.css";
 
 export default function userPost(){
+    const getDate = new Date().toLocaleDateString();
     const getHour = new Date().getHours();
+    const postedDate = getDate;
     const postedHour = getHour;
 
     const cooper = {
@@ -38,7 +40,7 @@ export default function userPost(){
 
                 </div>
 
-                <span>{postedHour}h . {<BiWorld size={17} />}</span>
+                <span>{postedDate} at {postedHour}h . {<BiWorld size={17} />}</span>
             </div>
 
             <div className="userPostText">

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import {MdDateRange} from "react-icons/md";
+
 import "./Profile.css";
 
 // HeaderMe Icons
@@ -152,6 +154,7 @@ export default function Profile(props){
 
             <div className="mainProfile">
                 <Avatar />
+                <p className="joinedDate"><MdDateRange size={20} />joined date<br/>2022/05/02</p>
 
                 <div className="profileUserName">
                     <span className="pUsername">{dbUser}</span>
