@@ -83,15 +83,15 @@ export default function Register(){
 
                 <form>
                     <div className="formFields">
-                        <input type="text" id="username" name="username" placeholder="nome de usuário" onChange={(e) => setUser(e.target.value)} autoComplete="off" autoFocus />
+                        <input type="text" id="username" name="username" placeholder="nome de usuário" onChange={(e) => setUser(e.target.value)} autoComplete="off" autoFocus required />
 
-                        <input type="text" id="name" name="name" placeholder="Seu nome de perfil" onChange={(e) => setProfile(e.target.value)} autoComplete="off" />
+                        <input type="text" id="name" name="name" placeholder="Seu nome de perfil" onChange={(e) => setProfile(e.target.value)} autoComplete="off" required />
 
-                        <input type="email" id="email" name="email" autoComplete="off" placeholder="Email válido" onChange={(e) => setEmail(e.target.value)} />
+                        <input type="email" id="email" name="email" autoComplete="off" placeholder="Email válido" onChange={(e) => setEmail(e.target.value)}  required/>
                     
-                        <input type="password" id="password" name="password" placeholder="Senha" onChange={(e) => setPassword(e.target.value)} autoComplete="off" />
+                        <input type="password" id="password" name="password" placeholder="Senha" onChange={(e) => setPassword(e.target.value)} autoComplete="off" required/>
 
-                        <input type="password" id="repeatpassword" name="repeatpassword" placeholder="Confirme sua senha" onChange={(e) => setRepeatPassword(e.target.value)} autoComplete="off" />
+                        <input type="password" id="repeatpassword" name="repeatpassword" placeholder="Confirme sua senha" onChange={(e) => setRepeatPassword(e.target.value)} autoComplete="off" required />
                     </div>
 
                     <button type="submit" onClick={handleRegister} >Criar Conta</button>

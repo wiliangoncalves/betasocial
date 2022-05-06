@@ -7,6 +7,7 @@ import "./Me.css";
 import DefaultAvatar from "./img/defaultAvatar.png";
 
 import SearchHeader from "./SearchHeader/SearchHeader";
+import Aside from "../Aside/Aside";
 import UserPost from "../Main/UserPost/UserPost";
 import Nav from "../Nav/Nav";
 
@@ -100,6 +101,8 @@ export default function Me(){
             <UserPost />
 
             <Nav />
+
+            <Aside />
         </div>
     );
 }

@@ -236,7 +236,7 @@ export default function Profile(props){
             <div className="profileAbout">
                 <span>About:</span>
                 <p>{dbProfileAbout}</p>
-                <p className="joinedDate"><MdDateRange size={20} />Member Since<br/>{dbMemberDateYear}/{dbMemberDateMonth}/{dbMemberDateDay}</p>
+                <p className="joinedDate"><MdDateRange size={20} />Member Since<br/>{dbMemberDateMonth}/{dbMemberDateDay}/{dbMemberDateYear}</p>
             </div>
 
             {/* <div className="profileFollowing">

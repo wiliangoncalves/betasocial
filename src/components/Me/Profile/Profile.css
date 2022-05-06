@@ -11,11 +11,12 @@
 
 .mainProfile{
     display: flex;
-    /* position: absolute; */
-    /* flex-wrap: wrap; */
     width: 100%;
     margin: 0px auto 0px auto;
     background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 40%);
+    z-index: 999;
+    border-radius: 10px;
 }
 
 .joinedDate{
@@ -76,12 +77,13 @@
 }
 
 .pUsername{
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 600;
 }
 
 .pProfile{
-    font-size: 14px;
+    font-size: 16px;
+    margin-top: -10px;
     font-weight: 500;
 }
 
@@ -231,6 +233,7 @@
     top: 210px;
     background-color: #fff;
     margin-top: 60px;
+    box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 10%);
 }
 .profileAbout p{
     font-size: 14px;
@@ -252,7 +255,6 @@
     position: absolute;
     left: 50%;
     width: 50%;
-    /* margin: 0 auto 0 auto; */
 }
 
 @media screen and (min-width: 500px){
@@ -266,6 +268,9 @@
 @media screen and (min-width: 768px){
     .mainProfile{
         padding: 0px 15px 0px 100px;
+    }
+    .profileInfo{
+        padding: 0px 15px 0px 50px;
     }
     .editProfileContainer{
         left: 40%;
