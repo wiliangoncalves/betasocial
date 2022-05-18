@@ -65,25 +65,29 @@
         /* background-color: #c5c0c0; */
     }
 
-    nav p {
+    /* nav p {
         border-bottom: 1px solid rgb(0,0,0, .3);
         color: #5e5858;
         padding-bottom: 15px;
-    }
+    } */
     
     .IconsContainer{
-        background-color: #fff;
+        /* background-color: #fff; */
         padding: 5px;
         border-radius: 10px;
-        box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 30%);
+        /* box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 30%); */
         /* background-color: #c5c0c0; */
         /* border: 2px solid orange; */
+    }
+
+    .IconsContainer a span{
+        padding-left: 15px;
     }
 
     .IconsContainer a{
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        /* justify-content: space-evenly; */
         height: 1px;
         margin-bottom: 1px;
         box-sizing: border-box;
@@ -98,19 +102,28 @@
         border-left: 5px solid blue;
     }
 
+    .IconsContainer p, .Explore p{
+        margin-right: 100px;
+        color: #444343;
+    }
+
     .Explore{
         display: block;
-        margin-top: 60px;
-        background-color: #fff;
-        border-radius: 10px;
+        margin-top: 10px;
+        /* background-color: #fff; */
+        /* border-radius: 10px; */
         padding: 5px;
-        box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 40%);
+        /* box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 40%); */
+    }
+
+    .Explore a span{
+        padding-left: 15px;
     }
 
     .Explore a{
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        /* justify-content: space-evenly; */
         height: 1px;
         margin-bottom: 1px;
         box-sizing: border-box;
@@ -118,6 +131,6 @@
     }
 
     .appsIcon{
-        margin-left: -15px;
+        /* margin-left: -15px; */
     }
 }
