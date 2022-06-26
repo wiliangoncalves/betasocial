@@ -25,7 +25,7 @@ export default function Me(){
     const token = window.sessionStorage.getItem("access_token");
 
     useEffect(() => {
-        fetch("https://tariqa.herokuapp.com/me", {
+        fetch("http://192.168.0.116:3080/me", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

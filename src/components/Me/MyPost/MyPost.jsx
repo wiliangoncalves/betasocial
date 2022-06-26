@@ -21,21 +21,9 @@ import { MdVisibility } from "react-icons/md";
 import { HandlePhotoVideo } from "./PhotoVideo/PhotoVideo";
 import { HandleTextArea } from "./TextArea/TextArea";
 import HandleEmoji from "./Emoji/HandleEmoji";
+import AddPoll from "./AddPoll/AddPoll";
 
 export default function MyPost(){
-    // let local = window.location.href;
-    // if(local.includes("/mypost")){
-    //     let p = window.innerWidth;
-
-    //     if(p >= 769 && p <= 1024){
-    //         document.getElementById("postMe").style.margin = "30px 25.5% 30px auto";
-    //         // document.getElementById("postMe").style.width = "80%";
-    //     }
-
-    //     console.log(p);
-    //     // document.getElementById("postMe").style.margin = "80px 25.5% 30px auto";
-    //     // document.getElementById("postMe").style.width = "50%";
-    // }
 
     return(
         <div className="myPostContainer">
@@ -64,6 +52,8 @@ export default function MyPost(){
                     <textarea onChange={HandleTextArea} placeholder="O que está pensando hoje?" rows="4" cols="50"className="textArea" maxLength="1000">
                         
                     </textarea>
+
+                    <AddPoll />
 
                     <div className="contentPreview containerPreview">
                         <HandleEmoji />

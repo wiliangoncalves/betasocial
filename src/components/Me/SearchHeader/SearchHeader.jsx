@@ -16,7 +16,7 @@ import { AiFillMessage } from "react-icons/ai";
 export default function SearchHeader(){
     const token = sessionStorage.getItem("access_token");
 
-    window.onload = fetch("https://tariqa.herokuapp.com/profile", {
+    window.onload = fetch("http://192.168.0.116:3080/profile", {
             method: "POST",
             headers: {
                 "Content-Type": "Application/json"

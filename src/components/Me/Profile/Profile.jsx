@@ -14,8 +14,7 @@ import Avatar from "../avatar/Avatar";
 import UserPost from "../../Main/UserPost/UserPost";
 
 let user;
-
-fetch("https://tariqa.herokuapp.com/profile", {
+fetch("http://192.168.0.116:3080/profile", {
         method: "GET",
         headers: {
             "Content-Type": "Application/json"
@@ -58,7 +57,7 @@ export default function Profile(props){
 
     // Get database username and profile of the CURRENT USER!.
     useEffect(() => {
-        fetch("https://tariqa.herokuapp.com/profile", {
+        fetch("http://192.168.0.116:3080/profile", {
             method: "POST",
             headers: {
                 "Content-Type": "Application/json"
@@ -152,7 +151,7 @@ export default function Profile(props){
 
     // Handle apply changes.
     const handleApplyProfile = e => {
-        fetch("https://tariqa.herokuapp.com/addprofile", {
+        fetch("http://192.168.0.116:3080/addprofile", {
             method: "POST",
             headers: {
                 "Content-Type": "Application/json"

@@ -1,0 +1,8 @@
+.AddPollContainer{
+    border: 1px solid red;
+}
+
+.chooseOption:not(:radio){
+    display: flex;
+    flex-direction: column;
+}
