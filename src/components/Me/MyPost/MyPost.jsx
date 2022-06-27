@@ -76,10 +76,12 @@ export default function MyPost(){
                         {/* <span id="emojiPost" style={{display: "none"}} ></span> */}
                     </label>
 
-                    <label htmlFor="pollPost">
+                    <label htmlFor="pollPost" onClick={() => {
+                        document.querySelector('.AddPollContainer').style.display = 'block';
+                    }}>
                         <FaPoll size={20} color="#f87e3a" />
                         <span>Add a poll</span>
-                        <input type="file" id="pollPost" style={{display: "none"}} />
+                        <input type="file" id="pollPost" disabled style={{display: "none"}} />
                     </label>
 
                     <label htmlFor="visiblePost">

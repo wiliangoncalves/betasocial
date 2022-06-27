@@ -9,7 +9,7 @@ export default function Auth({children, props}) {
     const [show, setShow] = useState("none");
 
     useEffect(() => {
-        fetch("http://192.168.0.116:3080/me", {
+        fetch("http://192.168.0.109:3080/me", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -17,7 +17,7 @@ export default function Login(){
     const pass = useNavigate();
     
     const handleLogin = (e) => {
-        fetch("http://192.168.0.116:3080/login", {
+        fetch("http://192.168.0.109:3080/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -44,7 +44,7 @@ export default function Login(){
             if(res.auth){
                 window.sessionStorage.setItem("access_token", token);
 
-                window.onload = fetch("http://192.168.0.116:3080/profile", {
+                window.onload = fetch("http://192.168.0.109:3080/profile", {
                     method: "POST",
                     headers: {
                         "Content-Type": "Application/json"

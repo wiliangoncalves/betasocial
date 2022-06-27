@@ -25,7 +25,7 @@ export default function Me(){
     const token = window.sessionStorage.getItem("access_token");
 
     useEffect(() => {
-        fetch("http://192.168.0.116:3080/me", {
+        fetch("http://192.168.0.109:3080/me", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

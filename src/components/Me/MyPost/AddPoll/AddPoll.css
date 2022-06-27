@@ -1,8 +1,82 @@
 .AddPollContainer{
-    border: 1px solid red;
+    border: 1px solid #ccc;
+    margin: 5px;
+    padding: 10px;
+    display: none;
+}
+
+.removeChoice{
+    color: red;
+    /* background-color: red; */
+}
+.removeChoice:hover{
+    cursor: pointer;
+}
+
+.closePoll{
+    color: red;
+    font-size: 18px;
+    position: absolute;
+    right: 15px;
+}
+.closePoll:hover{
+    cursor: pointer;
+    background-color: red;
+    color: #fff;
 }
 
 .chooseOption:not(:radio){
     display: flex;
     flex-direction: column;
+}
+
+input[type=radio]{
+    /* width: 80%; */
+    padding: 55px;
+}
+
+.choices{
+    width: 80%;
+    height: 30px;
+    margin: 10px;
+    border-radius: 10px;
+    outline: 0;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+}
+
+.addChoicesBottom{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+}
+.addChoicesBottom button{
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 15px;
+    background-color: transparent;
+    border: 1px solid skyblue;
+    color: rgb(91, 181, 241);
+    font-size: 16px;
+}
+.addChoicesBottom button:hover{
+    cursor: pointer;
+    background-color: rgb(91, 181, 241);
+    color: #fff;
+}
+.addChoicesBottom i{
+    font-size: 20px;
+}
+
+.addChoicesBottom select{
+    padding: 10px 15px;
+    border-radius: 15px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 50%;
+}
+.addChoicesBottom select:focus{
+    outline: 0;
 }

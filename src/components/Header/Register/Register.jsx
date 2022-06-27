@@ -15,7 +15,7 @@ export default function Register(){
     const [message, setMessage] = useState("");
 
     const handleRegister = e => {
-        fetch("http://192.168.0.116:3080/register", {
+        fetch("http://192.168.0.109:3080/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
