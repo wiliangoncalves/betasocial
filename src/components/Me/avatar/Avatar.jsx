@@ -5,7 +5,7 @@ const token = sessionStorage.getItem("access_token");
 export default function Avatar(){
     const [avatar, setAvatar] = useState("");
 
-    fetch("http://192.168.0.109:3080/profile", {
+    fetch("https://tariqa.herokuapp.com/profile", {
     method: "POST",
     headers: {
         "Content-Type": "Application/json"
